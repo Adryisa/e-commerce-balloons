@@ -1,4 +1,4 @@
-const balloons = [
+const BALLOONS = [
   {
     model_num: '#001',
     type: 'Standard',
@@ -9,8 +9,8 @@ const balloons = [
     img_url:
       'https://res.cloudinary.com/dcy6vi33h/image/upload/v1638197378/standard/001_white_hikwgb.jpg',
     price: 10,
-    pack: '50 und',
+    pack: '200 und',
   },
 ];
 
-module.exports = balloons;
+module.exports = BALLOONS;
