@@ -38,3 +38,7 @@ const balloonSchema = new mongoose.Schema({
     require: true,
   },
 });
+
+const Balloon = mongoose.model('Balloon', balloonSchema);
+
+module.exports = Balloon;
