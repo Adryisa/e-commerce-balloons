@@ -5,6 +5,7 @@ const morgan = require('morgan');
 const cors = require('cors');
 const dotenv = require('dotenv');
 const dbConnection = require('./config/dbConnection');
+const balloonsRouter = require('./routes/ballons.routes');
 
 dotenv.config();
 
@@ -26,6 +27,8 @@ app.use('/**', (req, res) => {
   });
 });
 
+app.use('/api/balloons', balloonsRouter);
+
 // error handler
 app.use((error, req, res) => {
   res.status(error.status || 500);
@@ -37,7 +40,7 @@ app.use((error, req, res) => {
 });
 
 // server listening
-const port = process.env.PORT || 3100;
+const port = process.env.PORT;
 
 app.listen(port, () => {
   // eslint-disable-next-line no-console
