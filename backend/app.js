@@ -19,6 +19,7 @@ app.use(json());
 app.use(urlencoded({ extended: false }));
 app.use(cookieParser());
 
+// config routes
 app.use('/**', (req, res) => {
   res.status(404).json({
     message: 'Not found',
@@ -42,3 +43,5 @@ app.listen(port, () => {
   // eslint-disable-next-line no-console
   console.log(`Server is running on port ${port}`);
 });
+
+module.exports = app;
