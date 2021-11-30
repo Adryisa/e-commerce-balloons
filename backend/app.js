@@ -7,9 +7,12 @@ const dotenv = require('dotenv');
 const dbConnection = require('./config/dbConnection');
 
 dotenv.config();
+
+// create express server
 const app = express();
 dbConnection();
 
+// config middlewares
 app.use(morgan('dev'));
 app.use(cors());
 app.use(json());
@@ -22,17 +25,20 @@ app.use('/**', (req, res) => {
   });
 });
 
-app.use((err, req, res, next) => {
-  res.status(err.status || 500);
-   return {   
-       err.message === 'Not found'
-    ? res.json({
-        message: 'Element/Page not found',
-        error: err,
-      })
-    : res.json({
-        message: err.message,
-        error: err,
-      })
-   }
+// error handler
+app.use((error, req, res) => {
+  res.status(error.status || 500);
+  res.json({
+    error: {
+      message: error.message,
+    },
+  });
+});
+
+// server listening
+const port = process.env.PORT || 3100;
+
+app.listen(port, () => {
+  // eslint-disable-next-line no-console
+  console.log(`Server is running on port ${port}`);
 });
