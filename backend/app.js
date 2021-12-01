@@ -5,7 +5,7 @@ const morgan = require('morgan');
 const cors = require('cors');
 const dotenv = require('dotenv');
 const dbConnection = require('./config/dbConnection');
-const balloonsRouter = require('./routes/ballons.routes');
+const balloonsRouter = require('./routes/balloons.routes');
 
 dotenv.config();
 
@@ -21,13 +21,14 @@ app.use(urlencoded({ extended: false }));
 app.use(cookieParser());
 
 // config routes
+
+app.use('/api/balloons', balloonsRouter);
+
 app.use('/**', (req, res) => {
   res.status(404).json({
     message: 'Not found',
   });
 });
-
-app.use('/api/balloons', balloonsRouter);
 
 // error handler
 app.use((error, req, res) => {

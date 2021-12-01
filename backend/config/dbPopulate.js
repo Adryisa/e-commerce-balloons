@@ -1,5 +1,5 @@
 // const mongoose = require('mongoose');
-// const BALLOONS = require('../BALLOONS');
+// const BALLOONS = require('../balloons');
 // const Balloon = require('../models/balloon.model');
 // const dbConnection = require('./dbConnection');
 
@@ -10,4 +10,4 @@
 //   mongoose.disconnect();
 // }
 
-// // dbPopulate();
+// dbPopulate();
