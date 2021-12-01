@@ -2,11 +2,12 @@ const express = require('express');
 const {
   getAllBalloons,
   getBallonById,
+  addBalloon,
 } = require('../controller/balloon.controller');
 
 const router = express.Router();
 
-router.route('/').get(getAllBalloons);
+router.route('/').get(getAllBalloons).put(addBalloon);
 
 router.route('/:id').get(getBallonById);
 

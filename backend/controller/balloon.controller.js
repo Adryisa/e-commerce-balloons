@@ -18,7 +18,18 @@ async function getBallonById(req, res, next) {
   }
 }
 
+async function addBalloon(req, res, next) {
+  const balloon = req.body;
+  try {
+    const newBalloon = await Balloon.create(balloon);
+    res.status(201).json(newBalloon);
+  } catch (err) {
+    next(err);
+  }
+}
+
 module.exports = {
   getAllBalloons,
   getBallonById,
+  addBalloon,
 };
