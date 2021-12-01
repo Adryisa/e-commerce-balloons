@@ -1,5 +1,5 @@
 const Balloon = require('../models/balloon.model');
-const { getAllBalloons } = require('./balloon.controller');
+const { getAllBalloons, getBallonById } = require('./balloon.controller');
 
 jest.mock('../models/balloon.model');
 
@@ -24,6 +24,37 @@ describe('Given the balloon controller', () => {
       expect(Balloon.find).toHaveBeenCalled();
       expect(res.status).toHaveBeenCalled();
       expect(res.json).toHaveBeenCalled();
+    });
+  });
+  describe('When the getAllBalloons is called wit ha rejected value', () => {
+    test('Then res.next should be called', async () => {
+      Balloon.find.mockRejectedValue();
+
+      await getAllBalloons(req, res, next);
+
+      expect(Balloon.find).toHaveBeenCalled();
+      expect(next).toHaveBeenCalled();
+    });
+  });
+  describe('When the getBallonById is called', () => {
+    test('Then Balloon.findById and res.json should be called', async () => {
+      Balloon.findById.mockResolvedValue([]);
+
+      await getBallonById(req, res, next);
+
+      expect(Balloon.findById).toHaveBeenCalled();
+      expect(res.status).toHaveBeenCalled();
+      expect(res.json).toHaveBeenCalled();
+    });
+  });
+  describe('When the getBallonById is called wit ha rejected value', () => {
+    test('Then res.next should be called', async () => {
+      Balloon.findById.mockRejectedValue();
+
+      await getBallonById(req, res, next);
+
+      expect(Balloon.findById).toHaveBeenCalled();
+      expect(next).toHaveBeenCalled();
     });
   });
 });
