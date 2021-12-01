@@ -7,35 +7,35 @@ const balloonSchema = new mongoose.Schema({
   },
   type: {
     type: String,
-    require: true,
+    required: true,
   },
   type_img_url: {
     type: String,
-    require: false,
+    required: false,
   },
   size: {
     type: String,
     enum: ['13cm', '26cm', '30cm', '48cm', '80cm', '100cm'],
     default: '13cm',
-    require: true,
+    required: true,
   },
   color: {
     type: String,
-    require: true,
+    required: true,
   },
   img_url: {
     type: String,
-    require: true,
+    required: true,
   },
   price: {
     type: Number,
-    require: true,
+    required: true,
   },
   package: {
     type: String,
     enum: ['50 und', '100 und', '150 und'],
     default: '50und',
-    require: true,
+    required: true,
   },
 });
 

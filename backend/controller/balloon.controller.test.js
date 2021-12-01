@@ -25,12 +25,11 @@ describe('Given the balloon controller', () => {
 
       await getAllBalloons(req, res, next);
 
-      expect(Balloon.find).toHaveBeenCalled();
       expect(res.status).toHaveBeenCalled();
       expect(res.json).toHaveBeenCalled();
     });
   });
-  describe('When the getAllBalloons is called wit ha rejected value', () => {
+  describe('When the getAllBalloons is called with a rejected value', () => {
     test('Then res.next should be called', async () => {
       Balloon.find.mockRejectedValue();
 
@@ -61,18 +60,18 @@ describe('Given the balloon controller', () => {
       expect(next).toHaveBeenCalled();
     });
   });
-  //   describe('When the addBallon is called', () => {
-  //     test('Then Balloon.create and res.json should be called', async () => {
-  //       const balloon = req.body;
-  //       Balloon.find = jest.fn({
-  //         model_num: balloon.model_num,
-  //         type: 'Standard',
-  //       });
-  //       Balloon.create.mockResolvedValue({});
+  describe('When the addBallon is called', () => {
+    test('Then Balloon.create and res.json should be called', async () => {
+      const balloon = req.body;
+      Balloon.find = jest.fn({
+        model_num: balloon.model_num,
+        type: 'Standard',
+      });
+      Balloon.create.mockResolvedValue({});
 
-  //       await addBalloon(req, res, next);
+      await addBalloon(req, res, next);
 
-  //       expect(Balloon.create).toHaveBeenCalled();
-  //     });
-  //   });
+      expect(Balloon.create).toHaveBeenCalled();
+    });
+  });
 });
