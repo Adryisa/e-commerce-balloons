@@ -1,6 +1,6 @@
 const User = require('../models/user.model');
 const Cart = require('../models/cart.model');
-const { addUser } = require('./user.controller');
+const { addUser, getUserById, deleteUser } = require('./user.controller');
 
 jest.mock('../models/user.model');
 jest.mock('../models/cart.model');
@@ -25,15 +25,19 @@ describe('Given the users controller', () => {
         email: 'test',
         password: 'test',
       };
-      User.create.mockResolvedValue({});
-      Cart.create.mockResolvedValue({});
+      User.create.mockResolvedValue({
+        save: jest.fn(),
+      });
+      Cart.create.mockResolvedValue({
+        save: jest.fn(),
+      });
 
       await addUser(req, res, next);
 
       expect(User.create).toHaveBeenCalled();
       expect(Cart.create).toHaveBeenCalled();
-      //   expect(res.status).toHaveBeenCalled();
-      //   expect(res.json).toHaveBeenCalled();
+      expect(res.status).toHaveBeenCalled();
+      expect(res.json).toHaveBeenCalled();
     });
   });
   describe('When the addUser is called with no name', () => {
@@ -62,6 +66,47 @@ describe('Given the users controller', () => {
 
       await addUser(req, res, next);
 
+      expect(next).toHaveBeenCalled();
+    });
+  });
+  describe('When the getUserById is called', () => {
+    test('Then user.findbyId should have been called', async () => {
+      User.findById.mockResolvedValue({});
+
+      await getUserById(req, res, next);
+
+      expect(User.findById).toHaveBeenCalled();
+      expect(res.status).toHaveBeenCalled();
+      expect(res.json).toHaveBeenCalled();
+    });
+  });
+  describe('When the getUserById is called with a rejected value', () => {
+    test('Then res.next should be called', async () => {
+      User.findById.mockRejectedValue();
+
+      await getUserById(req, res, next);
+
+      expect(next).toHaveBeenCalled();
+    });
+  });
+  describe('When the deleteUser is called', () => {
+    test('Then User.findByIdAndDelete should be called', async () => {
+      User.findByIdAndDelete.mockReturnValue({});
+
+      await deleteUser(req, res, next);
+
+      expect(User.findByIdAndDelete).toHaveBeenCalled();
+      expect(res.status).toHaveBeenCalled();
+      expect(res.status).toHaveBeenCalled();
+    });
+  });
+  describe('When the deleteUser is called wih a rejected value', () => {
+    test('Then res.next should have been called', async () => {
+      User.findByIdAndDelete.mockRejectedValue();
+
+      await deleteUser(req, res, next);
+
+      expect(User.findByIdAndDelete).toHaveBeenCalled();
       expect(next).toHaveBeenCalled();
     });
   });

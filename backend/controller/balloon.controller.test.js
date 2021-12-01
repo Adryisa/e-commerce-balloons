@@ -64,6 +64,7 @@ describe('Given the balloon controller', () => {
     test('Then Balloon.create and res.json should be called', async () => {
       req.body = {
         model_num: 23,
+        type: 'test',
       };
       Balloon.find.mockResolvedValue({});
       Balloon.create.mockResolvedValue({});
@@ -73,6 +74,21 @@ describe('Given the balloon controller', () => {
       expect(Balloon.create).toHaveBeenCalled();
       expect(res.status).toHaveBeenCalled();
       expect(res.json).toHaveBeenCalled();
+    });
+  });
+  describe('When the addBalloon is called with a rejected value', () => {
+    test('Then next should have been called', async () => {
+      req.body = {
+        model_num: 23,
+        type: 'test',
+      };
+
+      Balloon.create.mockRejectedValue();
+
+      await addBalloon(req, res, next);
+
+      expect(Balloon.create).toHaveBeenCalled();
+      expect(next).toHaveBeenCalled();
     });
   });
 });

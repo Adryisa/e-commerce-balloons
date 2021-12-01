@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "cross-env NODE_ENV=production nodemon app.js",
-    "test": "cross-env NODE_ENV=test jest --runInBand --watchAll",
+    "test": "cross-env NODE_ENV=test jest --runInBand --watchAll --coverage",
     "lint": "eslint"
   },
   "author": "",
