@@ -44,4 +44,17 @@ async function getUserById(req, res, next) {
   }
 }
 
-module.exports = { addUser, getUserById };
+async function deleteUser(req, res, next) {
+  if (!req.params.id) {
+    next(new Error('Invalid Id'));
+  }
+  try {
+    const deletedUser = await User.findByIdAndDelete(req.params.id);
+
+    res.status(202).json(deletedUser);
+  } catch (err) {
+    next(err);
+  }
+}
+
+module.exports = { addUser, getUserById, deleteUser };
