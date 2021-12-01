@@ -9,7 +9,7 @@ const BALLOONS = [
     img_url:
       'https://res.cloudinary.com/dcy6vi33h/image/upload/v1638197378/standard/001_white_hikwgb.jpg',
     price: 10,
-    pack: '200 und',
+    package: '200 und',
   },
 ];
 

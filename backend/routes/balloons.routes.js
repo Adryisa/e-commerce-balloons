@@ -7,7 +7,7 @@ const {
 
 const router = express.Router();
 
-router.route('/').get(getAllBalloons).put(addBalloon);
+router.route('/').get(getAllBalloons).post(addBalloon);
 
 router.route('/:id').get(getBallonById);
 

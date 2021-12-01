@@ -33,8 +33,8 @@ const balloonSchema = new mongoose.Schema({
   },
   package: {
     type: String,
-    enum: ['50 und', '100 und'],
-    default: '50 und',
+    enum: ['50 und', '100 und', '150 und'],
+    default: '50und',
     require: true,
   },
 });
