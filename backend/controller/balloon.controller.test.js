@@ -62,6 +62,9 @@ describe('Given the balloon controller', () => {
   });
   describe('When the addBallon is called', () => {
     test('Then Balloon.create and res.json should be called', async () => {
+      req.body = {
+        model_num: 23,
+      };
       Balloon.find.mockResolvedValue({});
       Balloon.create.mockResolvedValue({});
 

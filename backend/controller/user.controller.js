@@ -24,7 +24,6 @@ async function addUser(req, res, next) {
 
     newUser.cart = userCart._id;
     newUser.save();
-
     res.status(201).json(newUser);
   } catch (err) {
     next(err);
