@@ -62,16 +62,14 @@ describe('Given the balloon controller', () => {
   });
   describe('When the addBallon is called', () => {
     test('Then Balloon.create and res.json should be called', async () => {
-      const balloon = req.body;
-      Balloon.find = jest.fn({
-        model_num: balloon.model_num,
-        type: 'Standard',
-      });
+      Balloon.find.mockResolvedValue({});
       Balloon.create.mockResolvedValue({});
 
       await addBalloon(req, res, next);
 
       expect(Balloon.create).toHaveBeenCalled();
+      expect(res.status).toHaveBeenCalled();
+      expect(res.json).toHaveBeenCalled();
     });
   });
 });
