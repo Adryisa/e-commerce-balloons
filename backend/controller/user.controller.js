@@ -1,0 +1,34 @@
+/* eslint-disable no-underscore-dangle */
+const bcrypt = require('bcryptjs');
+const Cart = require('../models/cart.model');
+const User = require('../models/user.model');
+
+async function addUser(req, res, next) {
+  const user = req.body;
+
+  if (!user.name || !user.lastname || !user.email || !user.password) {
+    next(new Error());
+  }
+
+  const salt = bcrypt.genSaltSync(10);
+  user.password = bcrypt.hashSync(user.password, salt);
+  try {
+    const newUser = await User.create(user);
+
+    const newCart = {
+      balloons: [],
+      user: newUser._id,
+    };
+
+    const userCart = await Cart.create(newCart);
+
+    newUser.cart = userCart._id;
+    newUser.save();
+
+    res.status(201).json(newUser);
+  } catch (err) {
+    next(err);
+  }
+}
+
+module.exports = addUser;
