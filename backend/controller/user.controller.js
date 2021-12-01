@@ -7,7 +7,7 @@ async function addUser(req, res, next) {
   const user = req.body;
 
   if (!user.name || !user.lastname || !user.email || !user.password) {
-    next(new Error());
+    next(new Error('Data incompleted'));
   }
 
   const salt = bcrypt.genSaltSync(10);
@@ -31,4 +31,17 @@ async function addUser(req, res, next) {
   }
 }
 
-module.exports = addUser;
+async function getUserById(req, res, next) {
+  if (!req.params.id) {
+    next(new Error('Invalid Id'));
+  }
+  try {
+    const user = await User.findById(req.params.id);
+
+    res.status(200).json(user);
+  } catch (err) {
+    next(err);
+  }
+}
+
+module.exports = { addUser, getUserById };
