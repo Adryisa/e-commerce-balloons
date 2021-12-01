@@ -1,8 +1,8 @@
 const Balloon = require('../models/balloon.model');
 
-async function getAllBalloons(req, res, next) {
+async function getAllBalloons({ query }, res, next) {
   try {
-    const balloons = await Balloon.find({});
+    const balloons = await Balloon.find(query);
     res.status(200).json(balloons);
   } catch (err) {
     next(err);
