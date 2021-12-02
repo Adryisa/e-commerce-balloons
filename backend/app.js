@@ -7,6 +7,7 @@ const dotenv = require('dotenv');
 const dbConnection = require('./config/dbConnection');
 const balloonsRouter = require('./routes/balloons.routes');
 const usersRouter = require('./routes/user.routes');
+const logRoute = require('./routes/login.routes');
 
 dotenv.config();
 
@@ -25,6 +26,7 @@ app.use(cookieParser());
 
 app.use('/api/balloons', balloonsRouter);
 app.use('/api/users', usersRouter);
+app.use('/api/login', logRoute);
 
 app.use('/**', (req, res) => {
   res.status(404).json({
