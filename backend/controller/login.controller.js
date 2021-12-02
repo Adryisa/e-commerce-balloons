@@ -1,5 +1,5 @@
 const User = require('../models/user.model');
-const { checkPassword, createJTW } = require('../helper/auth.help');
+const { checkPassword, createJWT } = require('../helper/auth.help');
 
 async function logUser(req, res, next) {
   const { email, password } = req.body;
@@ -9,7 +9,7 @@ async function logUser(req, res, next) {
     const check = await checkPassword(password, user);
 
     if (user && check) {
-      const jwToken = createJTW(user);
+      const jwToken = createJWT(user);
 
       res.json({
         user,
