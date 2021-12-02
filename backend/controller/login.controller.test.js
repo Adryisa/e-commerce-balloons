@@ -22,10 +22,8 @@ describe('Given the login controller', () => {
     describe('And user and passwd are valid (promise is resolved)', () => {
       beforeEach(() => {
         User.findOne.mockResolvedValue({});
-        let check = checkPassword();
-        let jwt = createJWT();
-        check = jest.fn().mockResolvedValue(true);
-        jwt = jest.fn().mockImplementation(() => 'token');
+        checkPassword.mockReturnValue(true);
+        createJWT.mockImplementation(() => 'token');
         req.body = {};
       });
       test('Then user should be logged', async () => {
@@ -40,8 +38,7 @@ describe('Given the login controller', () => {
   describe('And user and passwd are not valid (promise is resolved)', () => {
     beforeEach(() => {
       User.findOne.mockResolvedValue({});
-      let check = checkPassword();
-      check = jest.fn().mockResolvedValue(false);
+      checkPassword.mockResolvedValue(false);
       req.body = {};
     });
     test('Then user should not be logged', async () => {
@@ -55,8 +52,7 @@ describe('Given the login controller', () => {
   describe('And user is not valid (promise is resolved)', () => {
     beforeEach(() => {
       User.findOne.mockRejectedValue({});
-      let check = checkPassword();
-      check = jest.fn().mockResolvedValue(false);
+      checkPassword.mockResolvedValue(false);
       req.body = {};
     });
     test('Then user should not be logged', async () => {

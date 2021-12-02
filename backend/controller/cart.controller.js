@@ -5,9 +5,9 @@ const Cart = require('../models/cart.model');
 const Balloon = require('../models/balloon.model');
 
 async function getCartById(req, res, next) {
-  const cartId = req.params.id;
-
   try {
+    const cartId = req.params.id;
+
     const cart = await Cart.findById(cartId).populate({
       path: 'balloons',
       populate: {
