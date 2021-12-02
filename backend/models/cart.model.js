@@ -4,7 +4,10 @@ const cartSchema = new mongoose.Schema({
   balloons: {
     type: [
       {
-        balloonId: { type: mongoose.Schema.Types.ObjectId, ref: 'Balloon' },
+        balloonId: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: 'Balloon',
+        },
         amount: {
           type: Number,
           required: true,
