@@ -6,6 +6,7 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const dbConnection = require('./config/dbConnection');
 const balloonsRouter = require('./routes/balloons.routes');
+const cartRouter = require('./routes/cart.routes');
 const usersRouter = require('./routes/user.routes');
 const logRoute = require('./routes/login.routes');
 
@@ -25,6 +26,7 @@ app.use(cookieParser());
 // config routes
 
 app.use('/api/balloons', balloonsRouter);
+app.use('/api/cart', cartRouter);
 app.use('/api/users', usersRouter);
 app.use('/api/login', logRoute);
 
