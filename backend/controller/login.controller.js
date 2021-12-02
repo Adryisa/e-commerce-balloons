@@ -1,0 +1,27 @@
+const User = require('../models/user.model');
+const { checkPassword, createJTW } = require('../helper/auth.help');
+
+async function logUser(req, res, next) {
+  const { email, password } = req.body;
+
+  try {
+    const user = await User.findOne({ email });
+    const check = await checkPassword(password, user);
+
+    if (user && check) {
+      const jwToken = createJTW(user);
+
+      res.json({
+        user,
+        token: jwToken,
+      });
+    } else {
+      res.status(401).json({ message: 'Invalid user or passwd' });
+      return;
+    }
+  } catch (err) {
+    next(err);
+  }
+}
+
+module.exports = logUser;
