@@ -20,9 +20,6 @@ async function getBallonById(req, res, next) {
 
 async function addBalloon(req, res, next) {
   const balloon = req.body;
-  if (Balloon.find({ model_num: balloon.model_num, type: balloon.type })) {
-    next(new Error('Repetido'));
-  }
   try {
     const newBalloon = await Balloon.create(balloon);
     res.status(201).json(newBalloon);

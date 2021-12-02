@@ -1,12 +1,14 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+
 require('dotenv').config();
 
-async function checkPasswd(passwd, user) {
-  if (!user.passwd) {
+async function checkPassword(password, user) {
+  if (!user.password) {
     return false;
   }
-  await bcrypt.compare(passwd, user.passwd);
+  const compare = await bcrypt.compare(password, user.password);
+  return compare;
 }
 
 function createJWT(user) {
@@ -19,4 +21,4 @@ function createJWT(user) {
   return jwt.sign(tokenPayload, secret);
 }
 
-module.exports = { checkPasswd, createJWT };
+module.exports = { checkPassword, createJWT };

@@ -49,7 +49,7 @@ async function deleteUser(req, res, next) {
   }
   try {
     const deletedUser = await User.findByIdAndDelete(req.params.id);
-
+    await Cart.deleteMany({ user: req.params.id });
     res.status(202).json(deletedUser);
   } catch (err) {
     next(err);

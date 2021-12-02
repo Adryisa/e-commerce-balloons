@@ -91,11 +91,13 @@ describe('Given the users controller', () => {
   });
   describe('When the deleteUser is called', () => {
     test('Then User.findByIdAndDelete should be called', async () => {
-      User.findByIdAndDelete.mockReturnValue({});
+      User.findByIdAndDelete.mockResolvedValue({});
+      Cart.deleteMany.mockResolvedValue({});
 
       await deleteUser(req, res, next);
 
       expect(User.findByIdAndDelete).toHaveBeenCalled();
+      expect(Cart.deleteMany).toHaveBeenCalled();
       expect(res.status).toHaveBeenCalled();
       expect(res.status).toHaveBeenCalled();
     });
