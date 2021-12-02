@@ -1,5 +1,5 @@
+/* eslint-disable no-underscore-dangle */
 const Cart = require('../models/cart.model');
-const Ballon = require('../models/balloon.model');
 const Balloon = require('../models/balloon.model');
 
 async function getCartById(req, res, next) {
@@ -44,8 +44,35 @@ async function addBalloonToCart(req, res, next) {
 
     cart.save();
 
+    res.status(201).json(cart);
+  } catch (err) {
+    next(err);
+  }
+}
+
+async function updateBalloonAmountCart(req, res, next) {
+  try {
+    const { balloonId, cartId } = req.params;
+
+    const balloon = await Balloon.findById(balloonId);
+    const cart = await Cart.findById(cartId);
+    cart.balloons = cart.balloons.map((item) => {
+      if (item.balloonId.toString() === balloon._id.toString()) {
+        item.amount += Number(req.body.diff);
+        return item;
+      }
+      return item;
+    });
+
+    cart.save();
+
     res.status(200).json(cart);
   } catch (err) {
     next(err);
   }
 }
+module.exports = {
+  getCartById,
+  addBalloonToCart,
+  updateBalloonAmountCart,
+};
