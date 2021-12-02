@@ -11,7 +11,7 @@ async function logUser(req, res, next) {
     if (user && check) {
       const jwToken = createJWT(user);
 
-      res.json({
+      res.status(200).json({
         user,
         token: jwToken,
       });
