@@ -5,7 +5,7 @@ const Cart = require('../models/cart.model');
 const Balloon = require('../models/balloon.model');
 
 async function getCartById(req, res, next) {
-  const { cartId } = req.params;
+  const cartId = req.params.id;
 
   try {
     const cart = await Cart.findById(cartId).populate({
@@ -60,7 +60,7 @@ async function updateBalloonAmountCart(req, res, next) {
     const cart = await Cart.findById(cartId);
     cart.balloons = cart.balloons.map((item) => {
       if (item.balloonId.toString() === balloon._id.toString()) {
-        item.amount += Number(req.body.diff);
+        item.amount += 1;
         return item;
       }
       return item;
