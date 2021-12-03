@@ -1,7 +1,5 @@
 const jwt = require('jsonwebtoken');
 const dotenv = require('dotenv');
-const { Error } = require('mongoose');
-
 dotenv.config();
 
 function auth(req, res, next) {
@@ -19,6 +17,8 @@ function auth(req, res, next) {
       console.log(decodedToken);
 
       next();
+    } else {
+      throw new Error();
     }
   } catch (err) {
     res.status(401).json({
