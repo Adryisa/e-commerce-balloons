@@ -5,12 +5,12 @@ const {
   updateBalloonAmountCart,
   deleteBalloonCart,
 } = require('../controller/cart.controller');
-
+const auth = require('../middlewares/auth');
 const router = express.Router();
 
 router
   .route('/:cartId/balloon/:balloonId')
-  .post(addBalloonToCart)
+  .post(auth, addBalloonToCart)
   .patch(updateBalloonAmountCart)
   .delete(deleteBalloonCart);
 
