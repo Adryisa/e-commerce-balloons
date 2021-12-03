@@ -14,7 +14,6 @@ function auth(req, res, next) {
       token = authorization.substring(7);
 
       decodedToken = jwt.verify(token, process.env.SECRET);
-
       console.log(decodedToken);
 
       next();

@@ -36,39 +36,23 @@ async function addBalloonToCart(req, res, next) {
     const balloon = await Balloon.findById(balloonId);
     const cart = await Cart.findById(cartId);
 
-    cart.balloons = [
-      ...cart.balloons,
-      {
-        balloonId: balloon._id,
-        amount: 1,
-      },
-    ];
+    const balloonExits = cart.balloons.some(
+      (item) => JSON.stringify(item.balloonId) === JSON.stringify(balloon._id)
+    );
+
+    if (balloonExits) {
+      cart.balloons.forEach((item) => {
+        if (JSON.stringify(item.balloonId) === JSON.stringify(balloon._id)) {
+          item.amount += 1;
+        }
+      });
+    } else {
+      cart.balloons = [...cart.balloons, { balloonId: balloon._id, amount: 1 }];
+    }
 
     cart.save();
 
     res.status(201).json(cart);
-  } catch (err) {
-    next(err);
-  }
-}
-
-async function updateBalloonAmountCart(req, res, next) {
-  try {
-    const { balloonId, cartId } = req.params;
-
-    const balloon = await Balloon.findById(balloonId);
-    const cart = await Cart.findById(cartId);
-    cart.balloons = cart.balloons.map((item) => {
-      if (item.balloonId.toString() === balloon._id.toString()) {
-        item.amount += 1;
-        return item;
-      }
-      return item;
-    });
-
-    cart.save();
-
-    res.status(200).json(cart);
   } catch (err) {
     next(err);
   }
@@ -95,6 +79,5 @@ async function deleteBalloonCart(req, res, next) {
 module.exports = {
   getCartById,
   addBalloonToCart,
-  updateBalloonAmountCart,
   deleteBalloonCart,
 };
