@@ -37,12 +37,12 @@ async function addBalloonToCart(req, res, next) {
     const cart = await Cart.findById(cartId);
 
     const balloonExits = cart.balloons.some(
-      (item) => JSON.stringify(item.balloonId) === JSON.stringify(balloon._id)
+      (item) => item.balloonId.toString() === balloon._id.toString()
     );
 
     if (balloonExits) {
-      cart.balloons.forEach((item) => {
-        if (JSON.stringify(item.balloonId) === JSON.stringify(balloon._id)) {
+      cart.balloons.map((item) => {
+        if (item.balloonId.toString() === balloon._id.toString()) {
           item.amount += 1;
         }
       });
