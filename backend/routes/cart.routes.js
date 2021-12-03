@@ -11,8 +11,8 @@ const router = express.Router();
 router
   .route('/:cartId/balloon/:balloonId')
   .post(auth, addBalloonToCart)
-  .patch(updateBalloonAmountCart)
-  .delete(deleteBalloonCart);
+  .patch(auth, updateBalloonAmountCart)
+  .delete(auth, deleteBalloonCart);
 
 router.route('/:id').get(getCartById);
 

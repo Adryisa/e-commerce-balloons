@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
 const dotenv = require('dotenv');
+const { Error } = require('mongoose');
 
 dotenv.config();
 
@@ -16,11 +17,12 @@ function auth(req, res, next) {
       decodedToken = jwt.verify(token, process.env.SECRET);
 
       console.log(decodedToken);
+
+      next();
     }
   } catch (err) {
-    next(err);
-    res.json({
-      error: 'token missing or invalid',
+    res.status(401).json({
+      err: 'token missing or invalid',
     });
   }
 }
