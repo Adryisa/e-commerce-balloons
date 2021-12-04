@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const BALLOONS = require('../balloons');
+const BALLOONS = require('../__Mock__/balloons');
 const Balloon = require('../models/balloon.model');
 const dbConnection = require('./dbConnection');
 
