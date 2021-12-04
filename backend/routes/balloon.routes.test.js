@@ -35,4 +35,27 @@ describe('Given the balloon routes', () => {
       expect(response.status).toBe(200);
     });
   });
+  describe('When the POST /api/balloons is atacked', () => {
+    test('Then is should return the products', async () => {
+      const newBalloon = {
+        model_num: '#002',
+        type: 'Shiny',
+        type_img_url:
+          'https://res.cloudinary.com/dcy6vi33h/image/upload/v1638197358/types_img/standard_types_odnmzn.jpg',
+        size: '13cm',
+        color: 'black',
+        img_url:
+          'https://res.cloudinary.com/dcy6vi33h/image/upload/v1638197378/standard/001_white_hikwgb.jpg',
+        price: 10,
+        package: '100 und',
+      };
+
+      const response = await request(app)
+        .post('/api/balloons')
+        .send(newBalloon);
+
+      expect(response.body.color).toBe('black');
+      expect(response.status).toBe(201);
+    });
+  });
 });
