@@ -49,9 +49,9 @@ app.use((error, req, res) => {
 // server listening
 const port = process.env.PORT;
 
-app.listen(port, () => {
+const appServer = app.listen(port, () => {
   // eslint-disable-next-line no-console
   console.log(`Server is running on port ${port}`);
 });
 
-module.exports = app;
+module.exports = { app, appServer };
