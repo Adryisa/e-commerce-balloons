@@ -1,3 +1,4 @@
+/* eslint-disable operator-linebreak */
 const mongoose = require('mongoose');
 
 const dotenv = require('dotenv');

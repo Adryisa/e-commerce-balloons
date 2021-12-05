@@ -1,8 +1,9 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 .env
+/.scannerwork
 package-lock.json
 /node_modules
-balloons.js
+.balloons.js
 # compiled output
 /dist
 /tmp
