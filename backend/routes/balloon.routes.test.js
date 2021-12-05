@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const dbConnection = require('../config/dbConnection');
 const Balloon = require('../models/balloon.model');
 const BALLOONS = require('../__Mock__/balloons');
-const app = require('../app');
+const { app, appServer } = require('../app');
 
 describe('Given the balloon routes', () => {
   let initialCount;
@@ -18,8 +18,9 @@ describe('Given the balloon routes', () => {
     initialCount = response.length;
     initialId = response[0]._id;
   });
-  afterEach(async () => {
+  afterAll(async () => {
     await mongoose.disconnect();
+    await appServer.close();
   });
   describe('When the GET /api/balloons is atacked', () => {
     test('Then should return all balloons', async () => {
@@ -36,7 +37,7 @@ describe('Given the balloon routes', () => {
     });
   });
   describe('When the POST /api/balloons is atacked', () => {
-    test('Then is should return the products', async () => {
+    test('Then should return the products', async () => {
       const newBalloon = {
         model_num: '#002',
         type: 'Shiny',
