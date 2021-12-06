@@ -2,6 +2,7 @@ import React from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import { useEffect } from 'react'
 import { loadBalloons } from '../../redux/actions/actionCreators'
+import Header from '../../components/Header/header'
 
 const Home = () => {
 
@@ -15,9 +16,7 @@ useEffect(() => {
 console.log(balloons)
 
     return (
-        <div>
-
-        </div>
+    <Header /> 
     )
 }
 
