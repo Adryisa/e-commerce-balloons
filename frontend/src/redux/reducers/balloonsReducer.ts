@@ -4,15 +4,20 @@ import actionTypes from '../actions/actionTypes'
 
 
 
-function ballonsReducer(balloons = [], action: AnyAction) {
+function balloonsReducer(state = [], action: AnyAction) {
     let newState; 
 
     switch(action.type) {
         case actionTypes.LOAD_BALLOONS:
-        newState = [...action.balloons]
+        newState = action.balloons
+        break;
+
+        default: 
+        newState = state
+        break;
     }
     return newState;
 }
 
 
-export default ballonsReducer;
+export default balloonsReducer;

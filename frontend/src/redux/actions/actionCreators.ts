@@ -3,17 +3,17 @@ import Balloon from '../../interfaces/balloonsInterface'
 import balloonsAndCartActionTypes from './actionTypes'
 import { AppDispatch } from '../store/store'
 
-const urlBase = process.env.REACT_APP_API
+const urlBase = 'http://localhost:3200/api/'
 
 
 export function loadBalloons() {
-  const urlApi = `${urlBase}/balloons`
+  const urlApi = `${urlBase}balloons`
 
    return async (dispatch: AppDispatch) => {
-      const { data } = await axios.get(urlApi) 
+      const { data: balloons } = await axios.get(urlApi) 
       dispatch({
          type: balloonsAndCartActionTypes.LOAD_BALLOONS,
-         payload: data
+         balloons
       })
    }
 }
