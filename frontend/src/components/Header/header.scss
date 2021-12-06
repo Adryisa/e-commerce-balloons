@@ -1,5 +1,28 @@
-$primary-color: #E7EAB5;
-$secondary-color: #E2C2B9;
-$button-color: #906C66;
-$background-color: #F5F5F5;
+@import '../../variables';
 
+.header {
+    height: 10.5rem;
+    width: 100%;
+    background: $primary-color;
+    position: fixed;
+    z-index: 2;
+
+
+    &__title {
+    display: none;
+    }
+
+    &__logo-container {
+    margin: 1rem;
+    display: flex;
+    justify-content: flex-end;
+    }
+
+    &__login-cart {
+        padding: 1rem;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+
+    }
+}
