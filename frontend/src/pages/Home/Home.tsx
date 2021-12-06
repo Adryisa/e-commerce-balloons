@@ -8,14 +8,27 @@ const Home = () => {
 const balloons = useSelector(store => store)
 const dispatch = useDispatch()
 
-useEffect(() => {
-    dispatch(loadBalloons())
-}, [dispatch])
+// useEffect(() => {
+//     dispatch(loadBalloons())
+// }, [dispatch])
 
-console.log(balloons)
+// console.log(balloons)
 
     return (
-        <div>holi</div>
+        <nav className='navigation'>
+            <p className='navigation__text'>
+                Find your products: 
+            </p>
+            <div className='navigation__bar' />
+            <ul className='navigation__list'>
+            <li className='navigation__list-item'>
+                Balloons
+            </li>
+            <li className='navigation__list-item'>
+                Accesories
+            </li>
+            </ul>
+        </nav>
     )
 }
 
