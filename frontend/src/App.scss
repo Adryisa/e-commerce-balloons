@@ -22,3 +22,11 @@ h5,
 h6 {
   font-family: 'Pacifico', cursive;
 }
+
+main {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #f5f5f5;
+}
