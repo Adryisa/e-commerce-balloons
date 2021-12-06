@@ -41,7 +41,7 @@ async function addBalloonToCart(req, res, next) {
     );
 
     if (balloonExits) {
-      cart.balloons.map((item) => {
+      cart.balloons.forEach((item) => {
         if (item.balloonId.toString() === balloon._id.toString()) {
           item.amount += 1;
         }
@@ -53,6 +53,28 @@ async function addBalloonToCart(req, res, next) {
     cart.save();
 
     res.status(201).json(cart);
+  } catch (err) {
+    next(err);
+  }
+}
+
+async function updateBalloonAmountCart(req, res, next) {
+  try {
+    const { balloonId, cartId } = req.params;
+
+    const balloon = await Balloon.findById(balloonId);
+    const cart = await Cart.findById(cartId);
+    cart.balloons = cart.balloons.map((item) => {
+      if (item.balloonId.toString() === balloon._id.toString()) {
+        item.amount += 1;
+        return item;
+      }
+      return item;
+    });
+
+    cart.save();
+
+    res.status(200).json(cart);
   } catch (err) {
     next(err);
   }
@@ -79,5 +101,6 @@ async function deleteBalloonCart(req, res, next) {
 module.exports = {
   getCartById,
   addBalloonToCart,
+  updateBalloonAmountCart,
   deleteBalloonCart,
 };

@@ -4,6 +4,7 @@ const {
   getCartById,
   addBalloonToCart,
   deleteBalloonCart,
+  updateBalloonAmountCart,
 } = require('./cart.controller');
 
 jest.mock('../models/cart.model');
@@ -130,6 +131,52 @@ describe('Given the cart controller', () => {
       Balloon.findById.mockRejectedValue();
 
       await deleteBalloonCart(req, res, next);
+
+      expect(Balloon.findById).toHaveBeenCalled();
+      expect(Cart.findById).toHaveBeenCalled();
+      expect(next).toHaveBeenCalled();
+    });
+  });
+  describe('When the updateBalloonAmountCart is called', () => {
+    test('Then Balloon.findById, Cart.findById and res.json should be called', async () => {
+      Balloon.findById.mockResolvedValue({
+        _id: 'test',
+        model_num: 'test',
+        type: 'test',
+        size: 'test',
+        color: 'test',
+        img_url: 'test',
+        price: 1,
+        package: 'test',
+      });
+      Cart.findById.mockResolvedValue({
+        balloons: [
+          {
+            balloonId: 'test',
+            amount: 1,
+          },
+          {
+            balloonId: 'testaaar',
+            amount: 3,
+          },
+        ],
+        user: 'test',
+        save: jest.fn(),
+      });
+
+      await updateBalloonAmountCart(req, res, next);
+
+      expect(Balloon.findById).toHaveBeenCalled();
+      expect(Cart.findById).toHaveBeenCalled();
+      expect(res.status).toHaveBeenCalled();
+      expect(res.json).toHaveBeenCalled();
+    });
+  });
+  describe('When the updateBalloonAmountCart is called with a rejected value', () => {
+    test('Then the next should be called', async () => {
+      Balloon.findById.mockRejectedValue();
+
+      await updateBalloonAmountCart(req, res, next);
 
       expect(Balloon.findById).toHaveBeenCalled();
       expect(Cart.findById).toHaveBeenCalled();
