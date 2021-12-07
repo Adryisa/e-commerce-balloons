@@ -1,4 +1,3 @@
-
 export default interface Balloon {
     _id: string,
     model_num: string, 
@@ -9,9 +8,4 @@ export default interface Balloon {
     img_url: string, 
     price: number,
     package: string
-}
-
-export default interface User {
-    email: string,
-    password: string
 }

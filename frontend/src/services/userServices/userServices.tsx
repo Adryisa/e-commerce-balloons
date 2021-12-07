@@ -1,5 +1,5 @@
 import axios from "axios";
-import User from '../../interfaces/balloonsInterface'
+import User from '../../interfaces/userInterface'
 
 export default function userServices() {
     function logIg(user: User) {
