@@ -3,7 +3,7 @@ import balloonsReducer from "./balloonsReducer";
 
 
 const rootReducer = combineReducers({
-    balloonsReducer
+    balloons: balloonsReducer
 })
 
 export default rootReducer;
