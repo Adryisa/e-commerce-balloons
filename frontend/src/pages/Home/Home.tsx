@@ -1,13 +1,11 @@
 import React from 'react'
-import {useDispatch, useSelector} from 'react-redux'
 import './home.scss'
 import SecondaryTitle from '../../components/second-title/SecondaryTitle'
 
 
 const Home = () => {
 
-const balloons = useSelector(store => store)
-const dispatch = useDispatch()
+
 
 
 // put an oncliclk on the image to go to shop list
