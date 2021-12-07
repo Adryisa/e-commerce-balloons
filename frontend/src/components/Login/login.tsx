@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import userServices from '../../services/userServices/userServices'
+import LogOut from '../LogOut/logOut';
 
 const Login = () => {
     const [loginState, setLoginState] = useState({email: '', password: ''})
@@ -7,9 +8,6 @@ const Login = () => {
     const handleSubmit = (evt: any) => {
         evt.preventDefault()
         userServices().logIn((loginState))
-    }
-    const handleLogOut = () => {
-        userServices().logOut()
     }
 
     const handleChange = (evt: any, control: any) => {
@@ -41,8 +39,7 @@ const Login = () => {
                 onChange={(evt) => handleChange(evt, 'password')}
                 />
             </div>
-            <button type="submit" className='form-container__button'>Login</button>
-            <button type="reset" className='form-container__button' onClick={handleLogOut}>Logout</button>
+            <LogOut />
         </form>
 
     )
