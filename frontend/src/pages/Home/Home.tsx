@@ -1,16 +1,13 @@
 import React from 'react'
 import './home.scss'
-import SecondaryTitle from '../../components/second-title/SecondaryTitle'
 import Login from '../../components/Login/login'
 
 
 const Home = () => {
-
-// put an oncliclk on the image to go to shop list
-
     return (
         <section className='home'>
-            <SecondaryTitle /> 
+       <p className='secondary-title'> Find your products: </p> 
+        <p className='bar'></p>
           <nav className='navigation'>
             <ul className='navigation__list'>
             <li className='navigation__list-item' >

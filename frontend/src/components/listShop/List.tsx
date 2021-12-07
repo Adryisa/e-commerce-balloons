@@ -9,7 +9,7 @@ const List = ({balloon} : {balloon: Balloon}) => {
            <ul className='shop-list__list'>
                    <li className='shop-list__item'>
                     <div className='shop-list__item-img-container'>  
-                    <img src={balloon.img_url} alt="imagen globo" className='shop-list__item-img'/>
+                    {/* <img src={balloon.img_url} alt="imagen globo" className='shop-list__item-img'/> */}
                     </div>
                     <p className='shop-list__item-text'>{balloon.size}</p>
                     <p className='shop-list__item-text'>{balloon.type}</p>
