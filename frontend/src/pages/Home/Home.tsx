@@ -5,9 +5,6 @@ import SecondaryTitle from '../../components/second-title/SecondaryTitle'
 
 const Home = () => {
 
-
-
-
 // put an oncliclk on the image to go to shop list
 
     return (

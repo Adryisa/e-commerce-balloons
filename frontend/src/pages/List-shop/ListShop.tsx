@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import { loadBalloons } from '../../redux/actions/actionCreators'
 
-const ListShopt = () => {
+const ListShop = () => {
 
 const balloons = useSelector(store => store)
 const dispatch = useDispatch()
@@ -15,9 +15,9 @@ const dispatch = useDispatch()
 console.log(balloons)
     return (
         <div>
-            
+            Holiii im a list of products
         </div>
     )
 }
 
-export default ListShopt
+export default ListShop
