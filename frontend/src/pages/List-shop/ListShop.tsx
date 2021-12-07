@@ -2,8 +2,10 @@ import React from 'react'
 import { useEffect } from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import List from '../../components/listShop/List'
+import SecondaryTitle from '../../components/second-title/SecondaryTitle'
 import { loadBalloons } from '../../redux/actions/actionCreators'
 import { rootState } from '../../redux/reducers'
+import './listShop.scss'
 
 const ListShop = () => {
 
@@ -19,11 +21,15 @@ const dispatch = useDispatch()
 
 console.log(balloons)
     return (
-        <section className='shop-list-container'>
+        <div>
+            <SecondaryTitle />
+            <section className='shop-list-container'>
             {balloons.map((balloon: any) => (
-                <List balloon={balloon} key={balloon.id} />
+                <List balloon={balloon} key={balloon._id} />
             ))}
         </section>
+        </div>
+
     )
 }
 

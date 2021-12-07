@@ -2,7 +2,7 @@ import React from 'react'
 
 const SecondaryTitle = () => {
     return (
-        <div>
+        <div className='secondary-title-container'>
         <p className='secondary-title'>
         Find your products: 
         </p>
