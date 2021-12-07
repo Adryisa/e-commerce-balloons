@@ -1,5 +1,4 @@
 import axios from 'axios'
-import Balloon from '../../interfaces/balloonsInterface'
 import balloonsAndCartActionTypes from './actionTypes'
 import { AppDispatch } from '../store/store'
 
@@ -10,10 +9,10 @@ export function loadBalloons() {
   const urlApi = `${urlBase}balloons`
 
    return async (dispatch: AppDispatch) => {
-      const { data: balloons } = await axios.get(urlApi) 
+      const { data } = await axios.get(urlApi) 
       dispatch({
          type: balloonsAndCartActionTypes.LOAD_BALLOONS,
-         balloons
+         balloons: data
       })
    }
 }
