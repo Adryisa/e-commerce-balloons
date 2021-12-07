@@ -1,0 +1,32 @@
+@import '../../variables';
+
+.navigation {
+
+    &__bar {
+    width: 32.4rem;
+    height: 0.5rem;
+    background: #E2C2B9
+    }
+} 
+
+.secondary-title {
+    padding: 1rem;
+    margin: 0.8rem;
+    font-size: 1.6rem;
+
+    &__shop {
+        display: none;
+    }
+
+    &__cart {
+        display: none;
+    }
+
+    &__bar {
+        width: 32.4rem;
+        height: 0.5rem;
+        left: 4.5rem;
+        background: #E2C2B9
+    }
+}
+
