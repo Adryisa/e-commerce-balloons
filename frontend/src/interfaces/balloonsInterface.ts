@@ -10,3 +10,8 @@ export default interface Balloon {
     price: number,
     package: string
 }
+
+export default interface User {
+    email: string,
+    password: string
+}
