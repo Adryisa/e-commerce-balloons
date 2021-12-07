@@ -2,7 +2,7 @@ import axios from "axios";
 import User from '../../interfaces/userInterface'
 
 export default function userServices() {
-    function logIg(user: User) {
+    function logIn(user: User) { 
         const urlBase = 'http://localhost:3200/api'
 
         axios.post(`${urlBase}/login`, {    email: user.email, password: user.password   }).then((result) => {
@@ -18,7 +18,7 @@ export default function userServices() {
     }
 
     return {
-        logIg, 
+        logIn, 
         logOut
     }
 }

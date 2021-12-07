@@ -1,6 +1,7 @@
 import React from 'react'
 import './home.scss'
 import SecondaryTitle from '../../components/second-title/SecondaryTitle'
+import Login from '../../components/Login/login'
 
 
 const Home = () => {
@@ -22,6 +23,7 @@ const Home = () => {
             </li>
             </ul>
         </nav>
+        <Login />
         </section >
 
     )
