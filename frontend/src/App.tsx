@@ -1,25 +1,29 @@
 import React from 'react';
-import { Provider } from 'react-redux';
 import './App.scss'
-import Header from './components/header/header';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Header from './components/Header/header';
 import Sidebar from './components/sidebar/Sidebar';
 import Home from './pages/Home/Home';
-import configureStore from './redux/store/store';
+import ListShop from './pages/List-shop/ListShop';
+import Footer from './components/footer/Footer';
 
-const store = configureStore({});
 
 function App() {
   return (
+    <BrowserRouter>   
     <main  className="main" id="main">
       <Sidebar />
-      <Provider store={store}>    
       <div className="App">
         <Header />
-      <Home />
+        <Routes>
+        <Route path='/' element={<Home/>} />
+        <Route path='/shop' element={<ListShop />} />
+        </Routes>
+        <Footer />
     </div> 
-    </Provider>
     </main>
-
+    </BrowserRouter>
+ 
   );
 }
 

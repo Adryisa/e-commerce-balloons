@@ -1,0 +1,23 @@
+@import '../../_variables';
+
+.footer {
+    height: 4.5rem;
+    padding: 0 2rem;
+    background: $primary-color;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  
+    &__text {
+      font-size: 1.4rem;
+    }
+  
+    &__social-media {
+      display: flex;
+      gap: 1.5rem;
+    }
+  
+    &__social-media-icon {
+      height: 2rem;
+    }
+  }

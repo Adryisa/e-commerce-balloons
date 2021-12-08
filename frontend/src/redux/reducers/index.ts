@@ -3,8 +3,9 @@ import balloonsReducer from "./balloonsReducer";
 
 
 const rootReducer = combineReducers({
-    balloonsReducer
+    balloons: balloonsReducer
 })
 
 export default rootReducer;
-export type rootReducer = ReturnType<typeof rootReducer>;
+
+export type rootState = ReturnType<typeof rootReducer>;
