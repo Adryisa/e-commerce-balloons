@@ -1,5 +1,5 @@
 import { AnyAction } from "redux";
-import actionTypes from '../actions/actionTypes'
+import balloonsAndCartActionTypes from '../actions/actionTypes'
 
 
 
@@ -7,10 +7,9 @@ function balloonsReducer(state = [], action: AnyAction) {
     let newState; 
 
     switch(action.type) {
-        case actionTypes.LOAD_BALLOONS:
+        case balloonsAndCartActionTypes.LOAD_BALLOONS:
         newState = action.balloons
         break;
-        
         default: 
         newState = state
         break;

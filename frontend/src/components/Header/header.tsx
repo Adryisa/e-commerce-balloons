@@ -4,8 +4,12 @@ import partyando from '../../assets/logoPartyando.svg'
 import cart from '../../assets/cart.svg'
 import logUser from '../../assets/user-logo.svg'
 import './header.scss'
+import { Link } from 'react-router-dom'
 
 const Header = () => {
+
+        const user = JSON.parse(localStorage.getItem('user') || '{}')
+        
     return (
         <header className='header'>
             <h1 className='header__title'>Partyando
@@ -15,7 +19,10 @@ const Header = () => {
             </div>
 
             <section className='header__login-cart'>
-            <img src={cart} alt="ir al carrito" />
+        {
+            localStorage.getItem('user') ?  <Link to={`/cart/${user.user.cart}`} ><img src={cart} alt="ir al carrito" /></Link> : <p>Please log in to go to cart </p>
+
+        } 
             <img src={logUser} alt="link para logearte" />
             </section>
         </header>

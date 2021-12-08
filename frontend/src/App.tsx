@@ -1,11 +1,12 @@
 import React from 'react';
 import './App.scss'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Header from './components/Header/header';
+import Header from './components/header/Header';
 import Sidebar from './components/sidebar/Sidebar';
-import Home from './pages/Home/Home';
-import ListShop from './pages/List-shop/ListShop';
+import Home from './pages/home/Home';
+import ListShop from './pages/list-shop/ListShop';
 import Footer from './components/footer/Footer';
+import Cart from './pages/cart/Cart';
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
         <Routes>
         <Route path='/' element={<Home/>} />
         <Route path='/shop' element={<ListShop />} />
+        <Route path='/cart/:id' element={<Cart />} />
         </Routes>
         <Footer />
     </div> 

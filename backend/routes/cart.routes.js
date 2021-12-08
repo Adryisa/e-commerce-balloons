@@ -15,6 +15,5 @@ router
   .patch(auth, updateBalloonAmountCart)
   .delete(auth, deleteBalloonCart);
 
-router.route('/:id').get(getCartById);
-
+router.route('/:id').get(auth, getCartById);
 module.exports = router;

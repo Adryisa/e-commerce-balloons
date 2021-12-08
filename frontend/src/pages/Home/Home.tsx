@@ -1,6 +1,6 @@
 import React from 'react'
 import './home.scss'
-import Login from '../../components/Login/Login'
+import Login from '../../components/login/Login'
 
 
 const Home = () => {

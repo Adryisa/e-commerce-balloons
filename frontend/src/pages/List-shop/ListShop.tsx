@@ -22,6 +22,7 @@ console.log(balloons)
     return (
         <div>
         <p className=''> SHOP</p>
+        <div className='bar'></div>
             <section className='shop-list-container'>
             {balloons.map((balloon: any) => (
                 <List balloon={balloon} key={balloon._id} />
