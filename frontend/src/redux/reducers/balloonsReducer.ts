@@ -10,7 +10,6 @@ function balloonsReducer(state = [], action: AnyAction) {
         case balloonsAndCartActionTypes.LOAD_BALLOONS:
         newState = action.balloons
         break;
-        
         default: 
         newState = state
         break;

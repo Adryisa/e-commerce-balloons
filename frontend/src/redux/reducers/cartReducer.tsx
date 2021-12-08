@@ -8,15 +8,14 @@ function cartReducer(cart = initialCart, action: AnyAction ) {
 
     switch (action.type) {
         case balloonsAndCartActionTypes.LOAD_CART: 
-        newCart = action.cart
+        newCart = action.payload
         break;
 
         default:
         newCart = cart
         break
     }
-
-
+    return newCart
 }
 
 export default cartReducer
