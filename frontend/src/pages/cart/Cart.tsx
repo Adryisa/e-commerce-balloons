@@ -2,6 +2,9 @@ import React, {useEffect} from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { loadCart } from '../../redux/actions/actionCreators'
 import { rootState } from '../../redux/reducers'
+import minus from '../../assets/plus.svg'
+import plus from '../../assets/minus.svg'
+import trash from '../../assets/trash.svg'
 
 const Cart = () => {
 
@@ -27,8 +30,10 @@ const Cart = () => {
                <p>Type: {balloon.balloonId.type}</p>
                <p>Color: {balloon.balloonId.color}</p>
                <p>Price: {balloon.balloonId.price}</p>
-               <div></div>
-               <p>Amount: {balloon.amount}</p>
+               <img src={minus} alt="minus icon" />
+               <p>{balloon.amount}</p>
+               <img src={plus} alt="plus icon"/>
+               <img src={trash} alt="trash icon" />
 
                 </>
             )) : <h2>Your cart is empty</h2>}
