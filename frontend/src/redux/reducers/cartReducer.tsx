@@ -5,8 +5,8 @@ const initialCart = { balloons: [], amount: 68 }
 
 function cartReducer(cart = initialCart, action: AnyAction ) {
     let newCart;
-    console.log('REDUCER', cart)
 
+    
     switch (action.type) {
         case balloonsAndCartActionTypes.LOAD_CART: 
         newCart = action.carts

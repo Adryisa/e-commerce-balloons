@@ -19,24 +19,24 @@ const Cart = () => {
         dispatch(loadCart(user.user.cart))
     }, [dispatch])
 
-    console.log(cart)
-    
     return (
         <section>
-            {cart.balloons ? cart.balloons.map((balloon: any) => (
-                <>
+            {cart.balloons ? cart.balloons.map((balloon: any, key: number) => (
+                <div key={key}>
                 {/* <img src={balloon.balloonId.img_url} alt=balloon {balloon.balloonId.color} /> */}
 
                <p>Type: {balloon.balloonId.type}</p>
-               <p>Color: {balloon.balloonId.color}</p>
+               <p>Color: {balloon.balloonId.color }</p>
                <p>Price: {balloon.balloonId.price}</p>
                <img src={minus} alt="minus icon" />
                <p>{balloon.amount}</p>
                <img src={plus} alt="plus icon"/>
                <img src={trash} alt="trash icon" />
 
-                </>
-            )) : <h2>Your cart is empty</h2>}
+                </div>
+            )) : <h2>Your cart is empty</h2>
+            }
+            <button>PAY</button>
         </section>
     )
 }
