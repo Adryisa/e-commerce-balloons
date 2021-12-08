@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import userServices from '../../services/userServices/userServices'
-import LogOut from '../logout/LogOut';
+import LogOut from '../LogOut/logOut';
 
 const Login = () => {
     const [loginState, setLoginState] = useState({email: '', password: ''})

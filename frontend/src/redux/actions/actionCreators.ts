@@ -49,3 +49,23 @@ export function loadCart(id: string) {
       }
    }    
 }  
+
+export function addToCart(idCart: string, idBalloon: string) {
+   const urlApi = `${urlBase}cart/${idCart}/balloons/${idBalloon}`
+   const token = JSON.parse(localStorage.getItem('user') || '{}');
+
+   return async (dispatch: AppDispatch) => {
+      try {
+         const { data } = await axios.post(urlApi, {
+            headers: {
+               Authorization: `Bearer ${token.token}`
+            },
+         })
+      } catch (err) {
+         dispatch({
+            type: balloonsAndCartActionTypes.FAILED_ADD_CART,
+            err
+         })
+      }
+   }
+}
