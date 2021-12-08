@@ -21,10 +21,12 @@ const Cart = () => {
 
     return (
         <section>
+        <p className=''>CART</p>
+        <div className='bar'></div>
             {cart.balloons ? cart.balloons.map((balloon: any, key: number) => (
                 <div key={key}>
                 {/* <img src={balloon.balloonId.img_url} alt=balloon {balloon.balloonId.color} /> */}
-
+                <div>barrita verde</div>
                <p>Type: {balloon.balloonId.type}</p>
                <p>Color: {balloon.balloonId.color }</p>
                <p>Price: {balloon.balloonId.price}</p>
@@ -32,11 +34,9 @@ const Cart = () => {
                <p>{balloon.amount}</p>
                <img src={plus} alt="plus icon"/>
                <img src={trash} alt="trash icon" />
-
+               <button>PAY</button>
                 </div>
-            )) : <h2>Your cart is empty</h2>
-            }
-            <button>PAY</button>
+            )) : <h2>Your cart is empty</h2> }
         </section>
     )
 }
