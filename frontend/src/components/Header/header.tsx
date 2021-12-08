@@ -8,12 +8,8 @@ import { Link } from 'react-router-dom'
 
 const Header = () => {
 
-
-
         const user = JSON.parse(localStorage.getItem('user') || '{}')
-        const cartPage = `/cart/${user.user.cart}`
-
-
+        
     return (
         <header className='header'>
             <h1 className='header__title'>Partyando
@@ -24,7 +20,7 @@ const Header = () => {
 
             <section className='header__login-cart'>
         {
-            localStorage.getItem('user') ?  <Link to={cartPage} ><img src={cart} alt="ir al carrito" /></Link> : <p>Please log in to go to cart </p>
+            localStorage.getItem('user') ?  <Link to={`/cart/${user.user.cart}`} ><img src={cart} alt="ir al carrito" /></Link> : <p>Please log in to go to cart </p>
 
         } 
             <img src={logUser} alt="link para logearte" />

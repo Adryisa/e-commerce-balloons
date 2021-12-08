@@ -26,8 +26,8 @@ export function loadBalloons() {
    }
 }
 
-export function loadCart(id: any) {
-   const urlApi = `${urlBase}/cart/${id}`
+export function loadCart(id: string) {
+   const urlApi = `${urlBase}cart/${id}`
    const token = JSON.parse(localStorage.getItem('user') || '{}');
 
    return async (dispatch: AppDispatch) => {
@@ -39,7 +39,7 @@ export function loadCart(id: any) {
       })
       dispatch({
          type: balloonsAndCartActionTypes.LOAD_CART,
-         cart: data
+         carts: data
       })
    } catch (err) {
       dispatch({

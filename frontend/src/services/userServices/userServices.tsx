@@ -7,7 +7,6 @@ export default function userServices() {
 
         axios.post(`${urlBase}/login`, {    email: user.email, password: user.password   }).then((result) => {
             localStorage.setItem('user', JSON.stringify(result.data))
-
             window.location.reload()
         }).catch((err) => console.log(err))
     }
