@@ -1,6 +1,7 @@
 import axios from 'axios'
 import balloonsAndCartActionTypes from './actionTypes'
 import { AppDispatch } from '../store/store'
+import Balloon from '../../interfaces/balloonsInterface'
 
 const urlBase = 'http://localhost:3200/api/'
 
@@ -50,16 +51,24 @@ export function loadCart(id: string) {
    }    
 }  
 
-export function addToCart(idCart: string, idBalloon: string) {
-   const urlApi = `${urlBase}cart/${idCart}/balloons/${idBalloon}`
+export function addToCart(idCart: any, balloon : Balloon) {
+   const urlApi = `${urlBase}cart/${idCart}/balloons/${balloon}`
    const token = JSON.parse(localStorage.getItem('user') || '{}');
 
+   console.log(urlApi)
    return async (dispatch: AppDispatch) => {
       try {
          const { data } = await axios.post(urlApi, {
             headers: {
                Authorization: `Bearer ${token.token}`
             },
+            balloon: balloon._id
+         })
+         console.log(data)
+
+         dispatch({
+            type: balloonsAndCartActionTypes.ADD_TO_CART,
+            addedBalloon: data
          })
       } catch (err) {
          dispatch({

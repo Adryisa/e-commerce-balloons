@@ -1,5 +1,5 @@
 export default interface Balloon {
-    _id: string,
+    _id?: string,
     model_num: string, 
     type_img_url: string, 
     type: string,
