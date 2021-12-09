@@ -1,6 +1,6 @@
 import balloonsAndCartActionTypes from "../actions/actionTypes";
 import { AnyAction } from "redux";
-
+import Balloon from "../../interfaces/balloonsInterface";
 
 const initialCart = { balloons: [], amount: 0, totalPrice: 0 }
 
