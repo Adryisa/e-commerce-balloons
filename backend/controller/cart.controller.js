@@ -50,25 +50,9 @@ async function addBalloonToCart(req, res, next) {
       cart.balloons = [...cart.balloons, { balloonId: balloon._id, amount: 1 }];
     }
 
-    cart.save();
+    await cart.save();
 
-    const finalCart = await Cart.findById(cartId).populate({
-      path: 'balloons',
-      populate: {
-        path: 'balloonId',
-        select: [
-          'model_num',
-          'type',
-          'size',
-          'color',
-          'img_url',
-          'price',
-          'package',
-        ],
-      },
-    });
-
-    res.status(201).json(finalCart);
+    res.status(201).json(cart);
   } catch (err) {
     next(err);
   }
@@ -80,6 +64,8 @@ async function updateBalloonAmountCart(req, res, next) {
 
     const balloon = await Balloon.findById(balloonId);
     const cart = await Cart.findById(cartId);
+
+    cart.balloons;
     cart.balloons = cart.balloons.map((item) => {
       if (item.balloonId.toString() === balloon._id.toString()) {
         item.amount += 1;
@@ -109,7 +95,23 @@ async function deleteBalloonCart(req, res, next) {
 
     await cart.save();
 
-    res.status(204).json(cart);
+    const finalCart = await Cart.findById(cartId).populate({
+      path: 'balloons',
+      populate: {
+        path: 'balloonId',
+        select: [
+          'model_num',
+          'type',
+          'size',
+          'color',
+          'img_url',
+          'price',
+          'package',
+        ],
+      },
+    });
+
+    res.status(204).json(finalCart);
   } catch (err) {
     next(err);
   }
