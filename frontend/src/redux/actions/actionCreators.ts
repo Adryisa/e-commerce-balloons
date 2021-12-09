@@ -52,17 +52,20 @@ export function loadCart(id: string) {
 }  
 
 export function addToCart(idCart: any, balloon : Balloon) {
-   const urlApi = `${urlBase}cart/${idCart}/balloons/${balloon}`
    const token = JSON.parse(localStorage.getItem('user') || '{}');
+   
+   const {user} = JSON.parse(localStorage.getItem('user') || '{}')
+   
+   const urlApi = `${urlBase}cart/${user.cart}/balloon/${balloon}`
+   console.log(user.cart)
 
    console.log(urlApi)
    return async (dispatch: AppDispatch) => {
       try {
-         const { data } = await axios.post(urlApi, {
+         const { data } = await axios.post(urlApi, {}, {
             headers: {
                Authorization: `Bearer ${token.token}`
             },
-            balloon: balloon._id
          })
          console.log(data)
 
