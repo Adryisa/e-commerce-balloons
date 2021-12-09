@@ -52,7 +52,23 @@ async function addBalloonToCart(req, res, next) {
 
     cart.save();
 
-    res.status(201).json(cart);
+    const finalCart = await Cart.findById(cartId).populate({
+      path: 'balloons',
+      populate: {
+        path: 'balloonId',
+        select: [
+          'model_num',
+          'type',
+          'size',
+          'color',
+          'img_url',
+          'price',
+          'package',
+        ],
+      },
+    });
+
+    res.status(201).json(finalCart);
   } catch (err) {
     next(err);
   }
@@ -91,7 +107,7 @@ async function deleteBalloonCart(req, res, next) {
       (item) => item.balloonId.toString() !== balloon._id.toString()
     );
 
-    cart.save();
+    await cart.save();
 
     res.status(204).json(cart);
   } catch (err) {
