@@ -95,7 +95,6 @@ export function deleteToCart(idCart: any, balloon: Balloon) {
             headers: {
                Authorization: `Bearer ${token.token}`
             },
-             data: balloon
          }).then(() => {
             data = balloon
          })
