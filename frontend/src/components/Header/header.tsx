@@ -19,11 +19,11 @@ const Header = () => {
             </div>
 
             <section className='header__login-cart'>
+            <img src={logUser} alt="link para logearte" />
         {
             localStorage.getItem('user') ?  <Link to={`/cart/${user.user.cart}`} ><img src={cart} alt="ir al carrito" /></Link> : <p>Please log in to go to cart </p>
 
         } 
-            <img src={logUser} alt="link para logearte" />
             </section>
         </header>
     )

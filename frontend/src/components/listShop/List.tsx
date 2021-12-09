@@ -1,9 +1,23 @@
 import React from 'react'
 import Balloon from '../../interfaces/balloonsInterface'
+import { useDispatch, useSelector } from 'react-redux'
 import './list.scss'
+import { rootState } from '../../redux/reducers'
 import cart from '../../assets/cart-add.svg'
+import { useParams } from 'react-router'
+import { addToCart } from '../../redux/actions/actionCreators'
 
 const List = ({balloon} : {balloon: Balloon}) => {
+
+    const { id } = useParams()
+
+    const dispatch = useDispatch()
+
+    function handleAdd(balloon: any) {
+        dispatch(addToCart(id, balloon))
+    }
+
+
     return (
         <div>
            <ul className='shop-list__list'>
@@ -16,7 +30,7 @@ const List = ({balloon} : {balloon: Balloon}) => {
                     <p className='shop-list__item-text'>{balloon.color}</p>
                     <p className='shop-list__item-text'>Package: {balloon.package}</p>
                     <p className='shop-list__item-text'>Price: {balloon.price}€</p>
-                    <img src={cart} alt="" />
+                    <img src={cart} alt="cart icon" onClick={() => handleAdd(balloon._id)} />
                    </li>
                </ul> 
         </div>
