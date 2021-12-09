@@ -1,14 +1,19 @@
 import React, {useEffect} from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { loadCart } from '../../redux/actions/actionCreators'
+import { deleteToCart, loadCart } from '../../redux/actions/actionCreators'
+import { useParams } from 'react-router'
 import { rootState } from '../../redux/reducers'
 import minus from '../../assets/plus.svg'
 import plus from '../../assets/minus.svg'
 import trash from '../../assets/trash.svg'
+import Balloon from '../../interfaces/balloonsInterface'
 
 const Cart = () => {
 
+    const { id } = useParams()
+
     const cart = useSelector((store: rootState) => {
+        console.log('HOLA', store.cart)
         return store.cart
     })
 
@@ -18,6 +23,10 @@ const Cart = () => {
     useEffect(() => {
         dispatch(loadCart(user.cart))
     }, [dispatch])
+
+    function handleDelete(balloon: Balloon) {
+        dispatch(deleteToCart(id, balloon))
+    }
 
     return (
         <section>
@@ -34,7 +43,7 @@ const Cart = () => {
                <img src={minus} alt="minus icon" />
                <p>{''} {balloon.amount}</p>
                <img src={plus} alt="plus icon"/>
-               <img src={trash} alt="trash icon" />
+               <img src={trash} alt="trash icon" onClick={() => handleDelete(balloon.balloonId._id)}/>
                 </div>
             )) : <h2>Your cart is empty</h2> }
                   <p>

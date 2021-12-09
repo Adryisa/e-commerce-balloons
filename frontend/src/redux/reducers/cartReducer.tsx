@@ -2,7 +2,7 @@ import balloonsAndCartActionTypes from "../actions/actionTypes";
 import { AnyAction } from "redux";
 import Balloon from "../../interfaces/balloonsInterface";
 
-const initialCart = { balloons: [], amount: 0, totalPrice: 'holii' }
+const initialCart = { balloons: [], amount: 0, totalPrice: 0 }
 
 function cartReducer(cart = initialCart, action: AnyAction ) {
     let newCart;
@@ -23,10 +23,15 @@ function cartReducer(cart = initialCart, action: AnyAction ) {
                     }
                 }
                 return item;
-            }) : [ ...cart.balloons, action.balloon], 
+            }) : [ ...cart.balloons, action.addedBalloon], 
             totalPrice:  cart.totalPrice + action.balloonId.amount + action.balloonId.price
         }
         break;
+        case balloonsAndCartActionTypes.DELETE_CART_BALLOON:
+        console.log(action);
+        newCart = {...cart, balloons: cart.balloons.filter((item: any) => item.balloonId._id !== action.payload)}
+        console.log(newCart)
+        return newCart
         default:
         newCart = cart
         break

@@ -2,6 +2,7 @@ import axios from 'axios'
 import balloonsAndCartActionTypes from './actionTypes'
 import { AppDispatch } from '../store/store'
 import Balloon from '../../interfaces/balloonsInterface'
+import { isConstructorDeclaration } from 'typescript'
 
 const urlBase = 'http://localhost:3200/api/'
 
@@ -42,6 +43,7 @@ export function loadCart(id: string) {
          type: balloonsAndCartActionTypes.LOAD_CART,
          carts: data
       })
+       console.log(data)
    } catch (err) {
       dispatch({
          type: balloonsAndCartActionTypes.FAILED_LOAD_CART, 
@@ -82,22 +84,27 @@ export function deleteToCart(idCart: any, balloon: Balloon) {
    const token = JSON.parse(localStorage.getItem('user') || '{}')
 
    const { user } = JSON.parse(localStorage.getItem('user') || '{}')
-
+  
    const urlApi = `${urlBase}cart/${user.cart}/balloon/${balloon}`
-
+   console.log(urlApi)
    console.log(balloon)
-
    return async (dispatch: AppDispatch) => {
       try {
-         const { data } = await axios.delete(urlApi, {
+         let data;
+         await axios.delete(urlApi,  { 
             headers: {
                Authorization: `Bearer ${token.token}`
             },
+             data: balloon
+         }).then(() => {
+            data = balloon
          })
 
+         console.log(data)
+
          dispatch({
-            type: balloonsAndCartActionTypes.ADD_TO_CART,
-            addedBalloon: data
+            type: balloonsAndCartActionTypes.DELETE_CART_BALLOON,
+            payload: data
          })
 
       } catch (err) {
