@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { deleteToCart, loadCart } from '../../redux/actions/actionCreators'
+import { deleteOnCart, loadCart } from '../../redux/actions/actionCreators'
 import { useParams } from 'react-router'
 import { rootState } from '../../redux/reducers'
 import minus from '../../assets/plus.svg'
@@ -25,7 +25,7 @@ const Cart = () => {
     }, [dispatch])
 
     function handleDelete(balloon: Balloon) {
-        dispatch(deleteToCart(id, balloon))
+        dispatch(deleteOnCart(id, balloon))
     }
 
     return (

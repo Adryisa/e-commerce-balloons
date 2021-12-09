@@ -80,7 +80,7 @@ export function addToCart(idCart: any, balloon : Balloon) {
    }
 }
 
-export function deleteToCart(idCart: any, balloon: Balloon) {
+export function deleteOnCart(idCart: any, balloon: Balloon) {
    const token = JSON.parse(localStorage.getItem('user') || '{}')
 
    const { user } = JSON.parse(localStorage.getItem('user') || '{}')
