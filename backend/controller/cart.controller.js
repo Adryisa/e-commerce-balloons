@@ -65,7 +65,6 @@ async function updateBalloonAmountCart(req, res, next) {
     const balloon = await Balloon.findById(balloonId);
     const cart = await Cart.findById(cartId);
 
-    cart.balloons;
     cart.balloons = cart.balloons.map((item) => {
       if (item.balloonId.toString() === balloon._id.toString()) {
         item.amount += 1;
@@ -89,9 +88,21 @@ async function deleteBalloonCart(req, res, next) {
     const balloon = await Balloon.findById(balloonId);
     const cart = await Cart.findById(cartId);
 
-    cart.balloons = cart.balloons.filter(
-      (item) => item.balloonId.toString() !== balloon._id.toString()
-    );
+    cart.balloons.forEach((item) => {
+      if (item.balloonId.toString() === balloon._id.toString()) {
+        if (item.amount === 1) {
+          cart.balloons = cart.balloons.filter(
+            (element) => element.balloonId.toString() !== balloon._id.toString()
+          );
+        } else {
+          item.amount -= 1;
+        }
+      }
+    });
+
+    // cart.balloons = cart.balloons.filter(
+    //   (item) => item.balloonId.toString() !== balloon._id.toString()
+    // );
 
     await cart.save();
 
