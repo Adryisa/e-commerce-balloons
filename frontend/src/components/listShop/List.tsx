@@ -9,17 +9,12 @@ import { addToCart } from '../../redux/actions/actionCreators'
 
 const List = ({balloon} : {balloon: Balloon}) => {
 
-    const balloonSingle = useSelector((store: rootState) => {
-        return store.cart
-    })
-
     const { id } = useParams()
 
     const dispatch = useDispatch()
 
     function handleAdd(balloon: any) {
         dispatch(addToCart(id, balloon))
-        console.log('im clicked')
     }
 
 
@@ -35,7 +30,7 @@ const List = ({balloon} : {balloon: Balloon}) => {
                     <p className='shop-list__item-text'>{balloon.color}</p>
                     <p className='shop-list__item-text'>Package: {balloon.package}</p>
                     <p className='shop-list__item-text'>Price: {balloon.price}€</p>
-                    <button type='button'  onClick={() => handleAdd(balloon._id)}>ADD</button>
+                    <img src={cart} alt="cart icon" onClick={() => handleAdd(balloon._id)} />
                    </li>
                </ul> 
         </div>

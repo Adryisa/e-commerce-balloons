@@ -54,12 +54,10 @@ export function loadCart(id: string) {
 export function addToCart(idCart: any, balloon : Balloon) {
    const token = JSON.parse(localStorage.getItem('user') || '{}');
    
-   const {user} = JSON.parse(localStorage.getItem('user') || '{}')
+   const { user } = JSON.parse(localStorage.getItem('user') || '{}')
    
    const urlApi = `${urlBase}cart/${user.cart}/balloon/${balloon}`
-   console.log(user.cart)
 
-   console.log(urlApi)
    return async (dispatch: AppDispatch) => {
       try {
          const { data } = await axios.post(urlApi, {}, {
@@ -67,8 +65,6 @@ export function addToCart(idCart: any, balloon : Balloon) {
                Authorization: `Bearer ${token.token}`
             },
          })
-         console.log(data)
-
          dispatch({
             type: balloonsAndCartActionTypes.ADD_TO_CART,
             addedBalloon: data
@@ -76,6 +72,37 @@ export function addToCart(idCart: any, balloon : Balloon) {
       } catch (err) {
          dispatch({
             type: balloonsAndCartActionTypes.FAILED_ADD_CART,
+            err
+         })
+      }
+   }
+}
+
+export function deleteToCart(idCart: any, balloon: Balloon) {
+   const token = JSON.parse(localStorage.getItem('user') || '{}')
+
+   const { user } = JSON.parse(localStorage.getItem('user') || '{}')
+
+   const urlApi = `${urlBase}cart/${user.cart}/balloon/${balloon}`
+
+   console.log(balloon)
+
+   return async (dispatch: AppDispatch) => {
+      try {
+         const { data } = await axios.delete(urlApi, {
+            headers: {
+               Authorization: `Bearer ${token.token}`
+            },
+         })
+
+         dispatch({
+            type: balloonsAndCartActionTypes.ADD_TO_CART,
+            addedBalloon: data
+         })
+
+      } catch (err) {
+         dispatch({
+            type: balloonsAndCartActionTypes.FAILED_DELETE_CART_BALLOON, 
             err
          })
       }

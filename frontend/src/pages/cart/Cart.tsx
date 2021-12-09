@@ -12,31 +12,36 @@ const Cart = () => {
         return store.cart
     })
 
-    const user = JSON.parse(localStorage.getItem('user') || '{}')
+    const { user } = JSON.parse(localStorage.getItem('user') || '{}')
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(loadCart(user.user.cart))
+        dispatch(loadCart(user.cart))
     }, [dispatch])
 
     return (
         <section>
         <p className=''>CART</p>
         <div className='bar'></div>
+
             {cart.balloons ? cart.balloons.map((balloon: any, key: number) => (
                 <div key={key}>
                 {/* <img src={balloon.balloonId.img_url} alt=balloon {balloon.balloonId.color} /> */}
                 <div>barrita verde</div>
-               <p>Type: {balloon.balloonId.type}</p>
-               <p>Color: {balloon.balloonId.color }</p>
-               <p>Price: {balloon.balloonId.price}</p>
+               <p>Type: {''} {balloon.balloonId.type}</p>
+               <p>Color: {''} {balloon.balloonId.color }</p>
+               <p>Price: {''} {balloon.balloonId.price}</p>
                <img src={minus} alt="minus icon" />
-               <p>{balloon.amount}</p>
+               <p>{''} {balloon.amount}</p>
                <img src={plus} alt="plus icon"/>
                <img src={trash} alt="trash icon" />
-               <button>PAY</button>
                 </div>
             )) : <h2>Your cart is empty</h2> }
+                  <p>
+                Total price:
+                {cart?.totalPrice}
+                  </p>
+                <button>PAY</button>
         </section>
     )
 }
