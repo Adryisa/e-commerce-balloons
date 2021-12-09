@@ -154,8 +154,8 @@ export function decreaseBalloon(idCart: any, balloon: Balloon) {
   
    const urlApi = `${urlBase}cart/${user.cart}/balloon/${balloon}`
    console.log(urlApi)
-   console.log(balloon)
 
+   
    return async (dispatch: AppDispatch) => {
       try {
          const { data } = await axios.patch(urlApi, {

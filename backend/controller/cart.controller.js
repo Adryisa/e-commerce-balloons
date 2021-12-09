@@ -74,9 +74,26 @@ async function updateBalloonAmountCart(req, res, next) {
       return item;
     });
 
-    cart.save();
+    await cart.save();
 
-    res.status(200).json(cart);
+    const finalCart = await Cart.findById(cartId).populate({
+      path: 'balloons',
+      populate: {
+        path: 'balloonId',
+        select: [
+          'model_num',
+          'type',
+          'size',
+          'color',
+          'img_url',
+          'price',
+          'package',
+        ],
+      },
+    });
+    console.log(finalCart);
+
+    res.status(200).json(finalCart);
   } catch (err) {
     next(err);
   }
