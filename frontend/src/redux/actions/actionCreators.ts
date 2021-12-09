@@ -114,3 +114,69 @@ export function deleteOnCart(idCart: any, balloon: Balloon) {
       }
    }
 }
+
+export function increaseBalloon(idCart: any, balloon: Balloon) {
+   const token = JSON.parse(localStorage.getItem('user') || '{}')
+
+   const { user } = JSON.parse(localStorage.getItem('user') || '{}')
+  
+   const urlApi = `${urlBase}cart/${user.cart}/balloon/${balloon}`
+   console.log(urlApi)
+   console.log(balloon)
+
+   return async (dispatch: AppDispatch) => {
+      try {
+         const { data } = await axios.patch(urlApi, {
+            diff: +1
+         }, {
+            headers: {
+               Authorization: `Bearer ${token.token}`
+            },
+         })
+         dispatch({
+            type: balloonsAndCartActionTypes.INCREASE_AMOUNT_BALLOON,
+            payload: data
+         })
+      } catch(err) {
+         dispatch({
+            type: balloonsAndCartActionTypes.FAILED_INCREASE_AMOUNT_BALLOON,
+            err
+         })
+      }
+   }
+}
+
+
+export function decreaseBalloon(idCart: any, balloon: Balloon) {
+   const token = JSON.parse(localStorage.getItem('user') || '{}')
+
+   const { user } = JSON.parse(localStorage.getItem('user') || '{}')
+  
+   const urlApi = `${urlBase}cart/${user.cart}/balloon/${balloon}`
+   console.log(urlApi)
+   console.log(balloon)
+
+   return async (dispatch: AppDispatch) => {
+      try {
+         const { data } = await axios.patch(urlApi, {
+            diff: -1
+         }, {
+            headers: {
+               Authorization: `Bearer ${token.token}`
+            },
+         })
+         console.log(data)
+         dispatch({
+            type: balloonsAndCartActionTypes.DECREASE_AMOUNT_BALLOON,
+            payload: data
+         })
+      } catch(err) {
+         dispatch({
+            type: balloonsAndCartActionTypes.FAILED_DECREASE_AMOUNT_BALLOON,
+            err
+         })
+      }
+   }
+}
+
+

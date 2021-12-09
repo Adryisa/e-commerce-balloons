@@ -30,6 +30,10 @@ function cartReducer(cart = initialCart, action: AnyAction ) {
         case balloonsAndCartActionTypes.DELETE_CART_BALLOON:
         newCart = {...cart, balloons: cart.balloons.filter((item: any) => item.balloonId._id !== action.payload)}
         break;
+        case balloonsAndCartActionTypes.INCREASE_AMOUNT_BALLOON:
+        case balloonsAndCartActionTypes.DECREASE_AMOUNT_BALLOON:
+            newCart = {...cart, ...action.payload}
+        break
         default:
         newCart = cart
         break

@@ -1,10 +1,10 @@
 import React, {useEffect} from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { deleteOnCart, loadCart } from '../../redux/actions/actionCreators'
+import { decreaseBalloon, deleteOnCart, increaseBalloon, loadCart } from '../../redux/actions/actionCreators'
 import { useParams } from 'react-router'
 import { rootState } from '../../redux/reducers'
-import minus from '../../assets/plus.svg'
-import plus from '../../assets/minus.svg'
+import plus from '../../assets/plus.svg'
+import minus from '../../assets/minus.svg'
 import trash from '../../assets/trash.svg'
 import Balloon from '../../interfaces/balloonsInterface'
 
@@ -28,6 +28,18 @@ const Cart = () => {
         dispatch(deleteOnCart(id, balloon))
     }
 
+    function handleIncrease(balloon: Balloon) {
+        dispatch(increaseBalloon(id, balloon))
+
+        console.log('here here here')
+    }
+
+    function handleDecrease(balloon: Balloon) {
+        dispatch(decreaseBalloon(id, balloon))
+
+        console.log('im clicked decrease')
+    }
+
     return (
         <section>
         <p className=''>CART</p>
@@ -40,9 +52,11 @@ const Cart = () => {
                <p>Type: {''} {balloon.balloonId.type}</p>
                <p>Color: {''} {balloon.balloonId.color }</p>
                <p>Price: {''} {balloon.balloonId.price}</p>
-               <img src={minus} alt="minus icon" />
+               <img src={minus} alt="minus icon" onClick={() => handleDecrease(balloon.balloonId._id)}/>
                <p>{''} {balloon.amount}</p>
-               <img src={plus} alt="plus icon"/>
+               <img src={plus} alt="plus icon"  onClick={() => handleIncrease(balloon.balloonId._id)}/>
+
+               <p>SEPARARRRRRRRRR</p>
                <img src={trash} alt="trash icon" onClick={() => handleDelete(balloon.balloonId._id)}/>
                 </div>
             )) : <h2>Your cart is empty</h2> }
