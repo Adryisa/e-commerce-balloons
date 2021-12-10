@@ -18,17 +18,17 @@ const dispatch = useDispatch()
     dispatch(loadBalloons())
 }, [dispatch])
 
-console.log(balloons)
+
     return (
-        <div>
-        <p className=''> SHOP</p>
-        <div className='bar'></div>
-            <section className='shop-list-container'>
+        <section className='shop'>
+       <p className='page-title'> Shop </p> 
+        <p className='bar'></p>
+            <section className='shop-list'>
             {balloons.map((balloon: any) => (
                 <List balloon={balloon} key={balloon._id} />
             ))}
         </section>
-        </div>
+        </section>
 
     )
 }

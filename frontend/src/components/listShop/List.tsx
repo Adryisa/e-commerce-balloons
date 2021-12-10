@@ -23,13 +23,16 @@ const List = ({balloon} : {balloon: Balloon}) => {
            <ul className='shop-list__list'>
                    <li className='shop-list__item'>
                     <div className='shop-list__item-img-container'>  
-                    {/* <img src={balloon.img_url} alt="imagen globo" className='shop-list__item-img'/> */}
+                    <img src={balloon.img_url} alt="imagen globo" className='shop-list__item-img'/>
                     </div>
-                    <p className='shop-list__item-text'>{balloon.size}</p>
+                    <div className='shop-list__text-container'>
+                    <p className='shop-list__item-text'>Size: {balloon.size}</p>
                     <p className='shop-list__item-text'>{balloon.type}</p>
-                    <p className='shop-list__item-text'>{balloon.color}</p>
-                    <p className='shop-list__item-text'>Package: {balloon.package}</p>
+                    <p className='shop-list__item-text'>Color: {balloon.color}</p>
+                    <p className='shop-list__item-text'>Pack: {balloon.package}</p>
                     <p className='shop-list__item-text'>Price: {balloon.price}€</p>
+                    </div>
+
                     <img src={cart} alt="cart icon" onClick={() => handleAdd(balloon._id)} />
                    </li>
                </ul> 

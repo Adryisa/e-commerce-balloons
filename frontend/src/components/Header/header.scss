@@ -1,7 +1,7 @@
 @import '../../variables';
 
 .header {
-    height: 10.5rem;
+    height: 5.5rem;
     width: 100%;
     background: $primary-color;
     position: sticky;
@@ -10,18 +10,20 @@
     display: none;
     }
 
+
     &__logo-container {
-    display: flex;
-    justify-content: flex-end;
+   display: none;
     }
-    &__title-logo {
-        margin: 1rem;
-    }
+
     &__login-cart {
         padding: 1rem;
         width: 100%;
         display: flex;
-        justify-content: space-between;
-
+        justify-content: flex-end;
+        gap: 2rem
     }
+}
+
+.navigation-header {
+    display: none ;
 }
