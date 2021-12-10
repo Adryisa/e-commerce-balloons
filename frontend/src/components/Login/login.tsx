@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import userServices from '../../services/userServices/userServices'
 import LogOut from '../LogOut/logOut';
 import Register from '../register/Register';
+import './login.scss'
 
 const Login = () => {
     const [loginState, setLoginState] = useState({email: '', password: ''})
@@ -16,10 +17,8 @@ const Login = () => {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-
-            <div className='form-container'>
-                <input 
+        <form onSubmit={handleSubmit} className='form-container'>
+                 <input 
                 type="text" 
                 name="user-email" 
                 id="user-email" 
@@ -39,11 +38,9 @@ const Login = () => {
                 required
                 onChange={(evt) => handleChange(evt, 'password')}
                 />
-            </div>
             <button type="submit" className='form-container__button'>Login</button>
             <LogOut /> 
         </form>
-
     )
 }
 

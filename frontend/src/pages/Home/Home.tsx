@@ -13,13 +13,13 @@ const Home = () => {
                 <img src='https://res.cloudinary.com/dcy6vi33h/image/upload/v1638197401/main/ballons_bqqvdr.webp' alt="balloons image" className='navigation__list-img'/>
                <p className='navigation__list-text'> Balloons</p>
             </li>
-            <li className='navigation__list-item'> 
+            {/* <li className='navigation__list-item'> 
                 <img src='https://res.cloudinary.com/dcy6vi33h/image/upload/v1638197401/main/skyballoons_i2ha5b.webp' alt="accesories image" className='navigation__list-img'/>
                 <p className='navigation__list-text' >Accesories</p>
-            </li>
+            </li> */}
             </ul>
         </nav>
-        <Slider /> 
+        {/* <Slider />  */}
         </section >
 
     )

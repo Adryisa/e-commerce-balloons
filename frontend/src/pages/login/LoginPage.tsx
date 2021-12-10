@@ -1,16 +1,22 @@
 import React from 'react'
 import user from '../../assets/user-logo.svg'
 import Login from '../../components/Login/login'
+import './loginPage.scss'
 
 const LoginPage = () => {
     return (
-        <section>        
+        <section className='login'>        
         <p className='page-title'> LOGIN </p> 
         <p className='bar'></p>
 
-        <div className='logo-container'>
-            <img src={user} alt="user icon" className='logo-container__icon'/>
+        <div className='logo-container'>  
+
+        <div className='logo-container__circle'>
+            
+        <img src={user} alt="user icon" className='logo-container__icon'/>
         </div>
+        </div>
+
 
         <Login />
 
