@@ -1,6 +1,7 @@
 import React from 'react'
 import './home.scss'
 import Login from '../../components/Login/login'
+import Slider from '../../components/slider/Slider'
 
 const Home = () => {
     return (
@@ -20,6 +21,7 @@ const Home = () => {
             </ul>
         </nav>
         <Login />
+        <Slider /> 
         </section >
 
     )
