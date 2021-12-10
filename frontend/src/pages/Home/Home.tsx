@@ -1,12 +1,11 @@
 import React from 'react'
 import './home.scss'
-import Login from '../../components/Login/login'
 import Slider from '../../components/slider/Slider'
 
 const Home = () => {
     return (
-        <section className='home'>
-       <p className='secondary-title'> Find your products: </p> 
+    <section className='home'>
+       <p className='page-title-small'> Find your products: </p> 
         <p className='bar'></p>
           <nav className='navigation'>
             <ul className='navigation__list'>
@@ -20,7 +19,6 @@ const Home = () => {
             </li>
             </ul>
         </nav>
-        <Login />
         <Slider /> 
         </section >
 

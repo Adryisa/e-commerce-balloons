@@ -9,7 +9,7 @@ import Nav from '../navigation/Nav'
 
 const Header = () => {
 
-        const user = JSON.parse(localStorage.getItem('user') || '{}')
+    const user = JSON.parse(localStorage.getItem('user') || '{}')
         
     return (   
             <header className='header'>
@@ -21,13 +21,11 @@ const Header = () => {
 
         <section className='header__login-cart'>
             <Link to={'/login'}><img src={logUser} alt="link para logearte" /></Link>
-    
         {
             localStorage.getItem('user') ?  <Link to={`/cart/${user.user.cart}`} ><img src={cart} alt="ir al carrito" /></Link> : <Link to={'/login'} ><img src={cart} alt="ir al carrito" /></Link> 
 
         } 
         </section>
-
             <Nav />
         </header>
 
