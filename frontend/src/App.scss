@@ -12,11 +12,13 @@ html {
 }
 
 body {
+  width: 100vw;
   font-size: 1.6rem;
   font-family: 'Sintony', sans-serif;
 }
 
 .app {
+  max-width: 100%;
   min-height: 100%;
   display: flex;
   flex-direction: column;
