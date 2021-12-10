@@ -59,7 +59,7 @@ const Register = () => {
                 required
                 onChange={(evt) => handleChange(evt, 'password')}
                 />
-                <button type='submit'>Register</button>
+                <button type='submit' className='form-container__button'>Register</button>
             </div>
        </form>
     )
