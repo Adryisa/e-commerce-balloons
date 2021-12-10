@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.min.css';
 import 'swiper/swiper.min.css';
 import BALLOONS from './balloons'
-
+import './slider.scss'
 
 const Slider = () => {
 
@@ -14,7 +14,7 @@ const Slider = () => {
     <section className="categories">
       <h2 className="categories__title">Our work</h2>
       <div className="slider">
-        <Swiper loop spaceBetween={110} slidesPerView={1}>
+        <Swiper loop spaceBetween={110} slidesPerView={2}>
           {balloonsImg.map((item, index) => (
             <SwiperSlide key={index}>
               <div

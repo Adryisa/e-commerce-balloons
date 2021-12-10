@@ -18,7 +18,7 @@ const Home = () => {
             </Link>
             </ul>
         </nav>
-        {/* <Slider />  */}
+        <Slider /> 
         </section >
 
     )
