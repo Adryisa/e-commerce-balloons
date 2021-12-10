@@ -43,7 +43,7 @@ export function loadCart(id: string) {
          type: balloonsAndCartActionTypes.LOAD_CART,
          carts: data
       })
-       console.log(data)
+
    } catch (err) {
       dispatch({
          type: balloonsAndCartActionTypes.FAILED_LOAD_CART, 
@@ -86,8 +86,7 @@ export function deleteOnCart(idCart: any, balloon: Balloon) {
    const { user } = JSON.parse(localStorage.getItem('user') || '{}')
   
    const urlApi = `${urlBase}cart/${user.cart}/balloon/${balloon}`
-   console.log(urlApi)
-   console.log(balloon)
+
    return async (dispatch: AppDispatch) => {
       try {
          let data;
@@ -99,8 +98,7 @@ export function deleteOnCart(idCart: any, balloon: Balloon) {
             data = balloon
          })
 
-         console.log(data)
-
+      
          dispatch({
             type: balloonsAndCartActionTypes.DELETE_CART_BALLOON,
             payload: data
@@ -121,8 +119,7 @@ export function increaseBalloon(idCart: any, balloon: Balloon) {
    const { user } = JSON.parse(localStorage.getItem('user') || '{}')
   
    const urlApi = `${urlBase}cart/${user.cart}/balloon/${balloon}`
-   console.log(urlApi)
-   console.log(balloon)
+
 
    return async (dispatch: AppDispatch) => {
       try {
@@ -153,8 +150,6 @@ export function decreaseBalloon(idCart: any, balloon: Balloon) {
    const { user } = JSON.parse(localStorage.getItem('user') || '{}')
   
    const urlApi = `${urlBase}cart/${user.cart}/balloon/${balloon}`
-   console.log(urlApi)
-
    
    return async (dispatch: AppDispatch) => {
       try {
@@ -165,7 +160,6 @@ export function decreaseBalloon(idCart: any, balloon: Balloon) {
                Authorization: `Bearer ${token.token}`
             },
          })
-         console.log(data)
          dispatch({
             type: balloonsAndCartActionTypes.DECREASE_AMOUNT_BALLOON,
             payload: data

@@ -23,7 +23,7 @@ const Register = () => {
                 type="text" 
                 name="user-name" 
                 id="user-name" 
-                placeholder="NAME" 
+                placeholder="Name" 
                 className='form-container__input'
                 value={register.name}
                 required
@@ -33,7 +33,7 @@ const Register = () => {
                 type="text" 
                 name="user-lastname" 
                 id="user-lastname" 
-                placeholder="LASTNAME" 
+                placeholder="Lastname" 
                 className='form-container__input'
                 value={register.lastname}
                 required
@@ -59,6 +59,7 @@ const Register = () => {
                 required
                 onChange={(evt) => handleChange(evt, 'password')}
                 />
+                <button type='submit'>Register</button>
             </div>
        </form>
     )

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import userServices from '../../services/userServices/userServices'
 import LogOut from '../LogOut/logOut';
+import Register from '../register/Register';
 
 const Login = () => {
     const [loginState, setLoginState] = useState({email: '', password: ''})

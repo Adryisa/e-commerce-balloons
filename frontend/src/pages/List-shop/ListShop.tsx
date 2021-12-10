@@ -18,7 +18,7 @@ const dispatch = useDispatch()
     dispatch(loadBalloons())
 }, [dispatch])
 
-console.log(balloons)
+
     return (
         <div>
         <p className=''> SHOP</p>

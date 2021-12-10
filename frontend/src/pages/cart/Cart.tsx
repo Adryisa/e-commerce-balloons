@@ -13,7 +13,7 @@ const Cart = () => {
     const { id } = useParams()
 
     const cart = useSelector((store: rootState) => {
-        console.log('HOLA', store.cart)
+
         return store.cart
     })
 
@@ -30,14 +30,10 @@ const Cart = () => {
 
     function handleIncrease(balloon: Balloon) {
         dispatch(increaseBalloon(id, balloon))
-
-        console.log('here here here')
     }
 
     function handleDecrease(balloon: Balloon) {
         dispatch(decreaseBalloon(id, balloon))
-
-        console.log('im clicked decrease')
     }
 
     return (
