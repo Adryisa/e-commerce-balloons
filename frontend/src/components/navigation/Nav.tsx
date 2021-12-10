@@ -6,20 +6,20 @@ import mail from '../../assets/mail.svg'
 
 const Nav = () => {
     return (
-        <nav className='navigation'>
-            <ul className='navigation__list'>
-                <li className='navigation__items'>
+        <nav className='navigation-header'>
+            <ul className='navigation-header__list'>
+                <li className='navigation-header__item'>
                 <Link to='/'>     
-        <img src={house} alt="home icon" className='navigation__item-icon' />
-         <p className='navigation__item-text'>Home</p> 
+        <img src={house} alt="home icon" className='navigation-header__item-icon' />
+         <p className='navigation-header__item-text'>Home</p> 
         </Link>
         <Link to='/shop'>   
-        <img src={balloon} alt="courses icon" className='navigation__icon' />
-        <p className='navigation__item-text'>Balloons</p> 
+        <img src={balloon} alt="courses icon" className='navigation-header__item-icon' />
+        <p className='navigation-header__item-text'>Balloons</p> 
         </Link >
         <div>     
-        <img src={mail} alt="email" className='navigation__icon' />
-        <p className='navigation__item-text'>Contact us</p> 
+        <img src={mail} alt="email" className='navigation__item-icon' />
+        <p className='navigation-header__item-text'>Contact us</p> 
         </div>
                 </li>
             </ul>
