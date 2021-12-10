@@ -7,7 +7,7 @@ const Login = () => {
 
     const handleSubmit = (evt: any) => {
         evt.preventDefault()
-        userServices().logIn(loginState)
+        userServices().logIn((loginState))
     }
 
     const handleChange = (evt: any, control: any) => {

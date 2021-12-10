@@ -1,6 +1,5 @@
 import axios from 'axios'
 import User from '../../interfaces/userInterface'
-import userServices from './userServices'
 
 export default function registerUser(user: User) {
 
@@ -10,10 +9,9 @@ export default function registerUser(user: User) {
        name: user.name,
        lastname: user.lastname,
        email: user.email,
-       password: user.password
+       password: user.password,
    }).then((response) => {
        console.log(response)
        localStorage.setItem('user', JSON.stringify(response.data))
-       window.location.reload()
    })
 }
