@@ -91,7 +91,6 @@ async function updateBalloonAmountCart(req, res, next) {
         ],
       },
     });
-    console.log(finalCart);
 
     res.status(200).json(finalCart);
   } catch (err) {
