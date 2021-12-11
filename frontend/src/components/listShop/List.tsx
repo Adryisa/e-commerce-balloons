@@ -4,17 +4,18 @@ import { useDispatch, useSelector } from 'react-redux'
 import './list.scss'
 import { rootState } from '../../redux/reducers'
 import cart from '../../assets/cart-add.svg'
-import { useParams } from 'react-router'
 import { addToCart } from '../../redux/actions/actionCreators'
 
 const List = ({balloon} : {balloon: Balloon}) => {
 
-    const { id } = useParams()
+    const cartId = useSelector((store: rootState) => {
+        return store.user.cart
+    })
 
     const dispatch = useDispatch()
 
     function handleAdd(balloon: any) {
-        dispatch(addToCart(id, balloon))
+        dispatch(addToCart(cartId, balloon))
     }
 
 

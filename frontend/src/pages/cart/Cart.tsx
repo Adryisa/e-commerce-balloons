@@ -1,7 +1,6 @@
 import React, {useEffect} from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { decreaseBalloon, deleteOnCart, increaseBalloon, loadCart } from '../../redux/actions/actionCreators'
-import { useParams } from 'react-router'
 import { rootState } from '../../redux/reducers'
 import plus from '../../assets/plus.svg'
 import minus from '../../assets/minus.svg'
@@ -10,30 +9,30 @@ import Balloon from '../../interfaces/balloonsInterface'
 
 const Cart = () => {
 
-    const { id } = useParams()
+    const cartId = useSelector((store: rootState) => {
+        return store.user.cart
+    })
 
     const cart = useSelector((store: rootState) => {
-
         return store.cart
     })
 
-    const { user } = JSON.parse(localStorage.getItem('user') || '{}')
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(loadCart(user.cart))
+        dispatch(loadCart(cartId))
     }, [dispatch])
 
     function handleDelete(balloon: Balloon) {
-        dispatch(deleteOnCart(id, balloon))
+        dispatch(deleteOnCart(cartId, balloon))
     }
 
     function handleIncrease(balloon: Balloon) {
-        dispatch(increaseBalloon(id, balloon))
+        dispatch(increaseBalloon(cartId, balloon))
     }
 
     function handleDecrease(balloon: Balloon) {
-        dispatch(decreaseBalloon(id, balloon))
+        dispatch(decreaseBalloon(cartId, balloon))
     }
 
     return (

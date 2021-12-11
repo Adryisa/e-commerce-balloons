@@ -1,5 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 const bcrypt = require('bcryptjs');
+const { createJWT } = require('../helper/auth.help');
 const Cart = require('../models/cart.model');
 const User = require('../models/user.model');
 
@@ -24,7 +25,13 @@ async function addUser(req, res, next) {
 
     newUser.cart = userCart._id;
     newUser.save();
-    res.status(201).json(newUser);
+
+    const jwToken = createJWT(newUser);
+
+    res.status(201).json({
+      newUser,
+      token: jwToken,
+    });
   } catch (err) {
     next(err);
   }

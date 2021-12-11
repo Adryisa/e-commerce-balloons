@@ -1,14 +1,25 @@
 import React from 'react'
 import { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { addUser } from '../../redux/actions/actionCreators'
+import { rootState } from '../../redux/reducers'
 import registerUser from '../../services/userServices/registerService'
 
 const Register = () => {
 
     const [register, setRegister] = useState({name: '', lastname: '', email: '', password: ''})
 
-    const handleSubmit = (evt: any) => {
+    const user = useSelector((store: rootState) => {
+        return store.user
+    })
+    
+    const dispatch = useDispatch()
+
+    const handleSubmit = async (evt: any) => {
         evt.preventDefault()
-        registerUser(register)
+        const newUser = await registerUser(register)
+        console.log('toy en el componente',newUser)
+        dispatch(addUser(newUser))
     }
 
     const handleChange = (evt: any, control: any) => {

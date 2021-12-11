@@ -2,7 +2,9 @@ import axios from 'axios'
 import balloonsAndCartActionTypes from './actionTypes'
 import { AppDispatch } from '../store/store'
 import Balloon from '../../interfaces/balloonsInterface'
-import { isConstructorDeclaration } from 'typescript'
+import userServices from '../../services/userServices/userServices'
+import User from '../../interfaces/userInterface'
+import userLogin from '../../interfaces/userLoginInterface'
 
 const urlBase = 'http://localhost:3200/api/'
 
@@ -36,7 +38,7 @@ export function loadCart(id: string) {
          try {
       const { data } = await axios.get(urlApi, {
          headers: {
-            Authorization: `Bearer ${token.token}`
+            Authorization: `Bearer ${token}`
          }
       })
       dispatch({
@@ -53,23 +55,21 @@ export function loadCart(id: string) {
    }    
 }  
 
-export function addToCart(idCart: any, balloon : Balloon) {
+export function addToCart(idCart: string, balloon : Balloon) {
    const token = JSON.parse(localStorage.getItem('user') || '{}');
    
-   const { user } = JSON.parse(localStorage.getItem('user') || '{}')
-   
-   const urlApi = `${urlBase}cart/${user.cart}/balloon/${balloon}`
+   const urlApi = `${urlBase}cart/${idCart}/balloon/${balloon}`
 
    return async (dispatch: AppDispatch) => {
       try {
          const { data } = await axios.post(urlApi, {}, {
             headers: {
-               Authorization: `Bearer ${token.token}`
+               Authorization: `Bearer ${token}`
             },
          })
          dispatch({
             type: balloonsAndCartActionTypes.ADD_TO_CART,
-            addedBalloon: data
+            payload: data
          })
       } catch (err) {
          dispatch({
@@ -80,19 +80,17 @@ export function addToCart(idCart: any, balloon : Balloon) {
    }
 }
 
-export function deleteOnCart(idCart: any, balloon: Balloon) {
+export function deleteOnCart(idCart: string, balloon: Balloon) {
    const token = JSON.parse(localStorage.getItem('user') || '{}')
-
-   const { user } = JSON.parse(localStorage.getItem('user') || '{}')
   
-   const urlApi = `${urlBase}cart/${user.cart}/balloon/${balloon}`
+   const urlApi = `${urlBase}cart/${idCart}/balloon/${balloon}`
 
    return async (dispatch: AppDispatch) => {
       try {
          let data;
          await axios.delete(urlApi,  { 
             headers: {
-               Authorization: `Bearer ${token.token}`
+               Authorization: `Bearer ${token}`
             },
          }).then(() => {
             data = balloon
@@ -113,13 +111,11 @@ export function deleteOnCart(idCart: any, balloon: Balloon) {
    }
 }
 
-export function increaseBalloon(idCart: any, balloon: Balloon) {
+export function increaseBalloon(idCart: string, balloon: Balloon) {
    const token = JSON.parse(localStorage.getItem('user') || '{}')
 
-   const { user } = JSON.parse(localStorage.getItem('user') || '{}')
   
-   const urlApi = `${urlBase}cart/${user.cart}/balloon/${balloon}`
-
+   const urlApi = `${urlBase}cart/${idCart}/balloon/${balloon}`
 
    return async (dispatch: AppDispatch) => {
       try {
@@ -127,7 +123,7 @@ export function increaseBalloon(idCart: any, balloon: Balloon) {
             diff: +1
          }, {
             headers: {
-               Authorization: `Bearer ${token.token}`
+               Authorization: `Bearer ${token}`
             },
          })
          dispatch({
@@ -144,12 +140,10 @@ export function increaseBalloon(idCart: any, balloon: Balloon) {
 }
 
 
-export function decreaseBalloon(idCart: any, balloon: Balloon) {
+export function decreaseBalloon(idCart: string, balloon: Balloon) {
    const token = JSON.parse(localStorage.getItem('user') || '{}')
 
-   const { user } = JSON.parse(localStorage.getItem('user') || '{}')
-  
-   const urlApi = `${urlBase}cart/${user.cart}/balloon/${balloon}`
+   const urlApi = `${urlBase}cart/${idCart}/balloon/${balloon}`
    
    return async (dispatch: AppDispatch) => {
       try {
@@ -157,7 +151,7 @@ export function decreaseBalloon(idCart: any, balloon: Balloon) {
             diff: -1
          }, {
             headers: {
-               Authorization: `Bearer ${token.token}`
+               Authorization: `Bearer ${token}`
             },
          })
          dispatch({
@@ -173,4 +167,28 @@ export function decreaseBalloon(idCart: any, balloon: Balloon) {
    }
 }
 
+export function loadUser(user: userLogin) {
+      return (dispatch: AppDispatch) => {
+         dispatch({
+         type: balloonsAndCartActionTypes.LOAD_USER,
+         payload: user
+         })
+      }
+}
 
+export function addUser(user: User) {
+   return (dispatch: AppDispatch) => {
+      try {
+         dispatch({
+         type: balloonsAndCartActionTypes.ADD_USER,
+         payload: user
+      })
+      } catch(err) {
+         dispatch ({
+            type: balloonsAndCartActionTypes.FAILED_ADD_USER,
+            err
+         })
+      }
+
+   }
+}
