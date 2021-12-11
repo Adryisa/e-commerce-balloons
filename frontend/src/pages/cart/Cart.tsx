@@ -37,22 +37,19 @@ const Cart = () => {
 
     return (
         <section>
-        <p className=''>CART</p>
+        <p className='page-title'>CART</p>
         <div className='bar'></div>
-
             {cart.balloons ? cart.balloons.map((balloon: any, key: number) => (
-                <div key={key}>
-                {/* <img src={balloon.balloonId.img_url} alt=balloon {balloon.balloonId.color} /> */}
-                <div>barrita verde</div>
-               <p>Type: {''} {balloon.balloonId.type}</p>
-               <p>Color: {''} {balloon.balloonId.color }</p>
-               <p>Price: {''} {balloon.balloonId.price}</p>
-               <img src={minus} alt="minus icon" onClick={() => handleDecrease(balloon.balloonId._id)}/>
-               <p>{''} {balloon.amount}</p>
-               <img src={plus} alt="plus icon"  onClick={() => handleIncrease(balloon.balloonId._id)}/>
-
-               <p>SEPARARRRRRRRRR</p>
-               <img src={trash} alt="trash icon" onClick={() => handleDelete(balloon.balloonId._id)}/>
+                <div key={key} className='cart-list'>
+               <div className='cart-list__bar'>barrita verde</div>
+                <img src={balloon.balloonId.img_url} alt='balloon' className='cart-list__img'/>
+               <p className='cart-list__text'>Type: {''} {balloon.balloonId.type}</p>
+               <p className='cart-list__text'>Color: {''} {balloon.balloonId.color }</p>
+               <p className='cart-list__text'>Price: {''} {balloon.balloonId.price} €</p>
+               <p className='cart-list__text'>{''} {balloon.amount}</p>
+               <img className='cart-list__icon' src={minus} alt="minus icon" onClick={() => handleDecrease(balloon.balloonId._id)}/>
+               <img className='cart-list__icon' src={plus} alt="plus icon"  onClick={() => handleIncrease(balloon.balloonId._id)}/>
+               <img className='cart-list__icon' src={trash} alt="trash icon" onClick={() => handleDelete(balloon.balloonId._id)}/>
                 </div>
             )) : <h2>Your cart is empty</h2> }
                   <p>
