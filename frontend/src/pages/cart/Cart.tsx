@@ -10,32 +10,32 @@ import Balloon from '../../interfaces/balloonsInterface'
 
 const Cart = () => {
 
-    const cartId = useSelector((store: rootState) => {
+    const id = useSelector((store: rootState) => {
         return store.user.cart
+        console.log(id)
     })
 
     const cart = useSelector((store: rootState) => {
         return store.cart
+        console.log(cart)
     })
-
-    const { user } = JSON.parse(localStorage.getItem('user') || '{}')
 
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(loadCart(user.cart))
+        dispatch(loadCart(id))
     }, [dispatch])
 
     function handleDelete(balloon: Balloon) {
-        dispatch(deleteOnCart(cartId, balloon))
+        dispatch(deleteOnCart(id, balloon))
     }
 
     function handleIncrease(balloon: Balloon) {
-        dispatch(increaseBalloon(cartId, balloon))
+        dispatch(increaseBalloon(id, balloon))
     }
 
     function handleDecrease(balloon: Balloon) {
-        dispatch(decreaseBalloon(cartId, balloon))
+        dispatch(decreaseBalloon(id, balloon))
     }
 
     return (

@@ -7,7 +7,6 @@ async function logUser(req, res, next) {
   try {
     const user = await User.findOne({ email });
     const check = await checkPassword(password, user);
-
     if (user && check) {
       const jwToken = createJWT(user);
 

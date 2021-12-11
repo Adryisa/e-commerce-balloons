@@ -8,14 +8,14 @@ import './login.scss'
 import { loadUser } from '../../redux/actions/actionCreators';
 
 const Login = () => {
+    const [loginState, setLoginState] = useState({email: '', password: ''})
 
     const user = useSelector((store: rootState) => {
         return store.user
     })
-
+    
     const dispatch = useDispatch()
 
-    const [loginState, setLoginState] = useState({email: '', password: ''})
 
     const handleSubmit = async (evt: any) => {
         evt.preventDefault()
