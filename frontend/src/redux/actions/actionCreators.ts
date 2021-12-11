@@ -58,7 +58,6 @@ export function loadCart(id: string) {
 export function addToCart(idCart: any, balloon : Balloon) {
    const token = JSON.parse(localStorage.getItem('user') || '{}');
    
-   
    const urlApi = `${urlBase}cart/${idCart}/balloon/${balloon}`
 
    return async (dispatch: AppDispatch) => {
@@ -83,10 +82,8 @@ export function addToCart(idCart: any, balloon : Balloon) {
 
 export function deleteOnCart(idCart: any, balloon: Balloon) {
    const token = JSON.parse(localStorage.getItem('user') || '{}')
-
-   const { user } = JSON.parse(localStorage.getItem('user') || '{}')
   
-   const urlApi = `${urlBase}cart/${user.cart}/balloon/${balloon}`
+   const urlApi = `${urlBase}cart/${idCart}/balloon/${balloon}`
 
    return async (dispatch: AppDispatch) => {
       try {
@@ -117,10 +114,8 @@ export function deleteOnCart(idCart: any, balloon: Balloon) {
 export function increaseBalloon(idCart: any, balloon: Balloon) {
    const token = JSON.parse(localStorage.getItem('user') || '{}')
 
-   const { user } = JSON.parse(localStorage.getItem('user') || '{}')
   
-   const urlApi = `${urlBase}cart/${user.cart}/balloon/${balloon}`
-
+   const urlApi = `${urlBase}cart/${idCart}/balloon/${balloon}`
 
    return async (dispatch: AppDispatch) => {
       try {
@@ -148,9 +143,7 @@ export function increaseBalloon(idCart: any, balloon: Balloon) {
 export function decreaseBalloon(idCart: any, balloon: Balloon) {
    const token = JSON.parse(localStorage.getItem('user') || '{}')
 
-   const { user } = JSON.parse(localStorage.getItem('user') || '{}')
-  
-   const urlApi = `${urlBase}cart/${user.cart}/balloon/${balloon}`
+   const urlApi = `${urlBase}cart/${idCart}/balloon/${balloon}`
    
    return async (dispatch: AppDispatch) => {
       try {

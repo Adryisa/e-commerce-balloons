@@ -9,14 +9,14 @@ import { addToCart } from '../../redux/actions/actionCreators'
 
 const List = ({balloon} : {balloon: Balloon}) => {
 
-    const id = useSelector((store: rootState) => {
+    const cartId = useSelector((store: rootState) => {
         return store.user.cart
     })
 
     const dispatch = useDispatch()
 
     function handleAdd(balloon: any) {
-        dispatch(addToCart(id, balloon))
+        dispatch(addToCart(cartId, balloon))
     }
 
 
