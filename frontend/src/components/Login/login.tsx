@@ -1,15 +1,26 @@
 import React, { useState } from 'react';
 import userServices from '../../services/userServices/userServices'
+import { useSelector, useDispatch } from 'react-redux'
+import { rootState } from '../../redux/reducers'
 import LogOut from '../LogOut/logOut';
 import Register from '../register/Register';
 import './login.scss'
+import { loadUser } from '../../redux/actions/actionCreators';
 
 const Login = () => {
+
+    const user = useSelector((store: rootState) => {
+        return store.user
+    })
+
+    const dispatch = useDispatch()
+
     const [loginState, setLoginState] = useState({email: '', password: ''})
 
-    const handleSubmit = (evt: any) => {
+    const handleSubmit = async (evt: any) => {
         evt.preventDefault()
-        userServices().logIn((loginState))
+        const loggedUser = await userServices().logIn((loginState))
+        dispatch(loadUser(loggedUser))
     }
 
     const handleChange = (evt: any, control: any) => {

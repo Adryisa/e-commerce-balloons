@@ -13,7 +13,6 @@ const Cart = () => {
     const { id } = useParams()
 
     const cart = useSelector((store: rootState) => {
-
         return store.cart
     })
 

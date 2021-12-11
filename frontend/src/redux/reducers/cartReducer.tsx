@@ -13,18 +13,19 @@ function cartReducer(cart = initialCart, action: AnyAction ) {
         newCart = action.carts
         break;
         case balloonsAndCartActionTypes.ADD_TO_CART: 
-        newCart = {
-            balloons: cart.balloons.some((item: any) => item.balloonId === action.balloonId) ? 
-            cart.balloons.map((item: any) => {
-                if (item.balloonId === action.balloonId) {
+        if(cart.balloons.some((item: any) => item.balloonId === action.balloonId)){
+            newCart = cart.balloons.map((item: any) => {
+                console.log(item)
+                if (item.balloonId === action.balloonId) { console.log(item)
                     return {
                         ...item, 
                         amount: item.amount + action.balloonId.amount
                     }
                 }
                 return item;
-            }) : [ ...cart.balloons, action.addedBalloon], 
-            totalPrice:  cart.totalPrice + action.balloonId.amount + action.balloonId.price
+            }) 
+        }else{
+            newCart = [ ...cart.balloons, action.addedBalloon]
         }
         break;
         case balloonsAndCartActionTypes.DELETE_CART_BALLOON:

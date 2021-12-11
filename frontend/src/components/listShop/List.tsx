@@ -9,7 +9,9 @@ import { addToCart } from '../../redux/actions/actionCreators'
 
 const List = ({balloon} : {balloon: Balloon}) => {
 
-    const { id } = useParams()
+    const id = useSelector((store: rootState) => {
+        return store.user.cart
+    })
 
     const dispatch = useDispatch()
 
