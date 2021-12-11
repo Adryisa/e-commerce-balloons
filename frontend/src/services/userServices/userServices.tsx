@@ -6,8 +6,10 @@ export default function userServices() {
     function logIn(user: userLogin) { 
         const urlBase = 'http://localhost:3200/api'
 
-       const response =  axios.post(`${urlBase}/login`, {    email: user.email, password: user.password   }).then((result) => {
-            localStorage.setItem('user', JSON.stringify(result.data))
+       const response =  axios.post(`${urlBase}/login`, {    
+           email: user.email, password: user.password   
+        }).then((result) => {
+            localStorage.setItem('user', JSON.stringify(result.data.token))
 
             return result.data.user
 

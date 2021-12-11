@@ -38,7 +38,7 @@ export function loadCart(id: string) {
          try {
       const { data } = await axios.get(urlApi, {
          headers: {
-            Authorization: `Bearer ${token.token}`
+            Authorization: `Bearer ${token}`
          }
       })
       dispatch({
@@ -64,12 +64,12 @@ export function addToCart(idCart: any, balloon : Balloon) {
       try {
          const { data } = await axios.post(urlApi, {}, {
             headers: {
-               Authorization: `Bearer ${token.token}`
+               Authorization: `Bearer ${token}`
             },
          })
          dispatch({
             type: balloonsAndCartActionTypes.ADD_TO_CART,
-            addedBalloon: data
+            payload: data
          })
       } catch (err) {
          dispatch({
@@ -90,7 +90,7 @@ export function deleteOnCart(idCart: any, balloon: Balloon) {
          let data;
          await axios.delete(urlApi,  { 
             headers: {
-               Authorization: `Bearer ${token.token}`
+               Authorization: `Bearer ${token}`
             },
          }).then(() => {
             data = balloon
@@ -123,7 +123,7 @@ export function increaseBalloon(idCart: any, balloon: Balloon) {
             diff: +1
          }, {
             headers: {
-               Authorization: `Bearer ${token.token}`
+               Authorization: `Bearer ${token}`
             },
          })
          dispatch({
@@ -151,7 +151,7 @@ export function decreaseBalloon(idCart: any, balloon: Balloon) {
             diff: -1
          }, {
             headers: {
-               Authorization: `Bearer ${token.token}`
+               Authorization: `Bearer ${token}`
             },
          })
          dispatch({
