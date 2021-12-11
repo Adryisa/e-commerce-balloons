@@ -10,6 +10,9 @@ function userReducer(state = {}, action: AnyAction) {
         case balloonsAndCartActionTypes.LOAD_USER:
         newState = action.payload
         break; 
+        case balloonsAndCartActionTypes.ADD_USER:
+        newState = action.payload.newUser
+        break;
         default:
         newState = state;
         break;

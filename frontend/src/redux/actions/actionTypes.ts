@@ -12,7 +12,9 @@ export interface actionTypesInterface {
     DECREASE_AMOUNT_BALLOON: string,
     FAILED_DECREASE_AMOUNT_BALLOON: string,
     LOAD_USER: string, 
-    FAILED_LOAD_USER: string
+    FAILED_LOAD_USER: string,
+    ADD_USER: string, 
+    FAILED_ADD_USER: string
 
 }
 
@@ -30,7 +32,9 @@ const balloonsAndCartActionTypes: actionTypesInterface = {
     DECREASE_AMOUNT_BALLOON: ' DECREASE_AMOUNT_BALLOON',
     FAILED_DECREASE_AMOUNT_BALLOON: 'FAILED_DECREASE_AMOUNT_BALLOON',
     LOAD_USER: 'LOAD_USER',
-    FAILED_LOAD_USER: 'FAILED_LOAD_USER'
+    FAILED_LOAD_USER: 'FAILED_LOAD_USER',
+    ADD_USER: 'ADD_USER',
+    FAILED_ADD_USER: 'FAILED_ADD_USER'
 }
 
 

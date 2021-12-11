@@ -55,7 +55,7 @@ export function loadCart(id: string) {
    }    
 }  
 
-export function addToCart(idCart: any, balloon : Balloon) {
+export function addToCart(idCart: string, balloon : Balloon) {
    const token = JSON.parse(localStorage.getItem('user') || '{}');
    
    const urlApi = `${urlBase}cart/${idCart}/balloon/${balloon}`
@@ -80,7 +80,7 @@ export function addToCart(idCart: any, balloon : Balloon) {
    }
 }
 
-export function deleteOnCart(idCart: any, balloon: Balloon) {
+export function deleteOnCart(idCart: string, balloon: Balloon) {
    const token = JSON.parse(localStorage.getItem('user') || '{}')
   
    const urlApi = `${urlBase}cart/${idCart}/balloon/${balloon}`
@@ -111,7 +111,7 @@ export function deleteOnCart(idCart: any, balloon: Balloon) {
    }
 }
 
-export function increaseBalloon(idCart: any, balloon: Balloon) {
+export function increaseBalloon(idCart: string, balloon: Balloon) {
    const token = JSON.parse(localStorage.getItem('user') || '{}')
 
   
@@ -140,7 +140,7 @@ export function increaseBalloon(idCart: any, balloon: Balloon) {
 }
 
 
-export function decreaseBalloon(idCart: any, balloon: Balloon) {
+export function decreaseBalloon(idCart: string, balloon: Balloon) {
    const token = JSON.parse(localStorage.getItem('user') || '{}')
 
    const urlApi = `${urlBase}cart/${idCart}/balloon/${balloon}`
@@ -168,11 +168,27 @@ export function decreaseBalloon(idCart: any, balloon: Balloon) {
 }
 
 export function loadUser(user: userLogin) {
-      console.log(user)
       return (dispatch: AppDispatch) => {
          dispatch({
          type: balloonsAndCartActionTypes.LOAD_USER,
          payload: user
          })
       }
+}
+
+export function addUser(user: User) {
+   return (dispatch: AppDispatch) => {
+      try {
+         dispatch({
+         type: balloonsAndCartActionTypes.ADD_USER,
+         payload: user
+      })
+      } catch(err) {
+         dispatch ({
+            type: balloonsAndCartActionTypes.FAILED_ADD_USER,
+            err
+         })
+      }
+
+   }
 }
