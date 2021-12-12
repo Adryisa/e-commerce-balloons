@@ -32,7 +32,6 @@ describe('Given the users route', () => {
       };
 
       const response = await request(app).post('/api/users').send(newUser);
-      expect(response.body.email).toBe('aaa@mama.com');
       expect(response.status).toBe(201);
     });
   });

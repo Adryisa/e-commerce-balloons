@@ -42,27 +42,33 @@ const Cart = () => {
         <div className='bar'></div>
         <div className='cart-list-container'>
             {cart.balloons ? cart.balloons.map((balloon: any, key: number) => (
-                <div key={key} className='cart-list'>
-               <div className='cart-list__bar'></div>
-               <div className='cart-list__text-img-container'>   
-               <img src={balloon.balloonId.img_url} alt='balloon' className='cart-list__img'/>             
-               <p className='cart-list__text'>Type: {balloon.balloonId.type}</p>
-               <p className='cart-list__text'>Color: {balloon.balloonId.color }</p>
-               <p className='cart-list__text'>Price: {balloon.balloonId.price} €</p>
-               <p className='cart-list__text'>Quantity: {balloon.amount}</p>
+            < React.Fragment key={key} >
+            <div className='cart-item__bar' ></div>
+            <div className='cart-item'>
+               <img src={balloon.balloonId.img_url} alt='balloon' className='cart-item__img'/>  
+               <div className='cart-item__text-container'>           
+               <p className='cart-item__text'>Type: {balloon.balloonId.type}</p>
+               <p className='cart-item__text'>Color: {balloon.balloonId.color }</p>
+               <p className='cart-item__text'>Package: {balloon.balloonId.package}</p>
+               <p className='cart-item__text'>Price: {balloon.balloonId.price} €</p>
                </div>      
-               <div className='cart-list__icon-container'>                
-               <img className='cart-list__icon' src={minus} alt="minus icon" onClick={() => handleDecrease(balloon.balloonId._id)}/>
-               <img className='cart-list__icon' src={plus} alt="plus icon"  onClick={() => handleIncrease(balloon.balloonId._id)}/>
-               <img className='cart-list__icon' src={trash} alt="trash icon" onClick={() => handleDelete(balloon.balloonId._id)}/>
+               <div className='cart-item__icon-container'>    
+                <div className='cart-item__icon-plus'>               
+                <img className='cart-item__icon' src={minus} alt="minus icon" onClick={() => handleDecrease(balloon.balloonId._id)}/>
+               <p className='cart-item__text'>{balloon.amount}</p>
+               <img className='cart-item__icon' src={plus} alt="plus icon"  onClick={() => handleIncrease(balloon.balloonId._id)}/></div>           
+
+               <img className='cart-item__icon-trash' src={trash} alt="trash icon" onClick={() => handleDelete(balloon.balloonId._id)}/>
                </div>
 
                 </div>
+                </ React.Fragment>
             )) : <h2>Your cart is empty</h2> }
+            
         </div>
+        <div className='cart-item__bar' ></div>
             <p className='cart-list__pay'>
                 Total price:
-                {cart?.totalPrice}
             </p>
                 <button className='cart-list__button'>PAY</button>
         </section>

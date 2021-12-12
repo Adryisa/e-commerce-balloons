@@ -107,15 +107,24 @@ describe('Given the cart controller', () => {
         balloons: [
           {
             balloonId: 'test',
-            amount: 1,
-          },
-          {
-            balloonId: 'testaaar',
-            amount: 3,
+            // model_num: 'test',
+            // type: 'test',
+            // size: 'test',
+            // color: 'test',
+            // img_url: 'test',
+            // price: 1,
+            // package: 'test',
+            // amount: 1,
           },
         ],
         user: 'test',
         save: jest.fn(),
+      });
+
+      Cart.findById.mockReturnValue({
+        balloons: {
+          populate: jest.fn(),
+        },
       });
 
       await deleteBalloonCart(req, res, next);

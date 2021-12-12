@@ -4,6 +4,7 @@ const {
   addBalloonToCart,
   deleteBalloonCart,
   updateBalloonAmountCart,
+  buyCart,
 } = require('../controller/cart.controller');
 const auth = require('../middlewares/auth');
 
@@ -15,5 +16,5 @@ router
   .patch(auth, updateBalloonAmountCart)
   .delete(auth, deleteBalloonCart);
 
-router.route('/:id').get(auth, getCartById);
+router.route('/:id').get(auth, getCartById).patch(auth, buyCart);
 module.exports = router;
