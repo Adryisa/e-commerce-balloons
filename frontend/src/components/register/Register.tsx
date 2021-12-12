@@ -18,7 +18,6 @@ const Register = () => {
     const handleSubmit = async (evt: any) => {
         evt.preventDefault()
         const newUser = await registerUser(register)
-        console.log('toy en el componente',newUser)
         dispatch(addUser(newUser))
     }
 

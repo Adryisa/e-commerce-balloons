@@ -2,7 +2,6 @@ import axios from 'axios'
 import balloonsAndCartActionTypes from './actionTypes'
 import { AppDispatch } from '../store/store'
 import Balloon from '../../interfaces/balloonsInterface'
-import userServices from '../../services/userServices/userServices'
 import User from '../../interfaces/userInterface'
 import userLogin from '../../interfaces/userLoginInterface'
 
