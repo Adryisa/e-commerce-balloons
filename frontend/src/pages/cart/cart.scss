@@ -38,6 +38,7 @@
     &__text {
         font-size: 1.5rem;
         text-transform: initial(uppercase);
+        
     }
 
     &__icon-container {
@@ -85,11 +86,17 @@
 .cart-list__button {
     margin: 2rem;
     width: 9.2rem;
-    border-width: none;
+    border: none;
     height: 3.4rem;
     background: rgba(144, 108, 102, 0.8);
     border-radius: 1.5rem;
     color: whitesmoke;
     text-transform: uppercase;
     font-weight: bold;
+}
+
+.text {
+    text-align: center;
+    font-size: 2.5rem;
+    color: black
 }

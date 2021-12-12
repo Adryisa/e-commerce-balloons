@@ -192,3 +192,29 @@ export function addUser(user: User) {
 
    }
 }
+
+export function buy(idCart: string) {
+   const token = JSON.parse(localStorage.getItem('user') || '{}')
+  
+   const urlApi = `${urlBase}cart/${idCart}`
+   console.log(urlApi)
+   return async (dispatch: AppDispatch) => {
+      try {
+         const data  = await axios.patch(urlApi, {}, {
+            headers: {
+               Authorization: `Bearer ${token}`
+            }
+         })
+         console.log('estoy en el action creator', data)
+         dispatch({
+            type: balloonsAndCartActionTypes.BUY,
+            payload: data
+         })
+      } catch (err) {
+         dispatch({
+            type: balloonsAndCartActionTypes.FAILED_BUY,
+            err
+         })
+      }
+   }
+}

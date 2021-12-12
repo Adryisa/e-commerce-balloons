@@ -102,18 +102,12 @@ async function deleteBalloonCart(req, res, next) {
   try {
     const { balloonId, cartId } = req.params;
 
-    console.log(1);
-
     const balloon = await Balloon.findById(balloonId);
     const cart = await Cart.findById(cartId);
-
-    console.log(2);
 
     cart.balloons = cart.balloons.filter(
       (item) => item.balloonId.toString() !== balloon._id.toString()
     );
-
-    console.log(3);
 
     await cart.save();
 
@@ -132,7 +126,7 @@ async function deleteBalloonCart(req, res, next) {
         ],
       },
     });
-    console.log(4);
+    console.log(5);
     res.status(204).json(finalCart);
   } catch (err) {
     next(err);
@@ -149,7 +143,7 @@ async function buyCart(req, res, next) {
 
     cart.save();
 
-    res.status(204).json(cart);
+    res.status(201).json(cart);
   } catch (err) {
     next(err);
   }

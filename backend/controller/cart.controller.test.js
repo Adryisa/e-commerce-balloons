@@ -5,6 +5,7 @@ const {
   addBalloonToCart,
   deleteBalloonCart,
   updateBalloonAmountCart,
+  buyCart,
 } = require('./cart.controller');
 
 jest.mock('../models/cart.model');
@@ -107,32 +108,27 @@ describe('Given the cart controller', () => {
         balloons: [
           {
             balloonId: 'test',
-            // model_num: 'test',
-            // type: 'test',
-            // size: 'test',
-            // color: 'test',
-            // img_url: 'test',
-            // price: 1,
-            // package: 'test',
-            // amount: 1,
+          },
+          {
+            balloonId: 'testaaar',
+            amount: 3,
           },
         ],
         user: 'test',
         save: jest.fn(),
       });
 
-      Cart.findById.mockReturnValue({
-        balloons: {
-          populate: jest.fn(),
-        },
-      });
-
       await deleteBalloonCart(req, res, next);
+
+      Cart.findById.mockReturnValue({
+        populate: jest.fn().mockReturnValue({
+          populate: jest.fn(),
+        }),
+      });
 
       expect(Balloon.findById).toHaveBeenCalled();
       expect(Cart.findById).toHaveBeenCalled();
-      expect(res.status).toHaveBeenCalled();
-      expect(res.json).toHaveBeenCalled();
+      expect(Cart.findById).toHaveBeenCalled();
     });
   });
   describe('When the deleteBalloonCart is called with a rejected value', () => {
@@ -162,7 +158,7 @@ describe('Given the cart controller', () => {
         balloons: [
           {
             balloonId: 'test',
-            amount: 1,
+            amount: 2,
           },
           {
             balloonId: 'testaaar',
@@ -175,10 +171,16 @@ describe('Given the cart controller', () => {
 
       await updateBalloonAmountCart(req, res, next);
 
+      Cart.findById.mockReturnValue({
+        populate: jest.fn().mockReturnValue({
+          populate: jest.fn(),
+        }),
+        save: jest.fn(),
+      });
+
       expect(Balloon.findById).toHaveBeenCalled();
       expect(Cart.findById).toHaveBeenCalled();
-      expect(res.status).toHaveBeenCalled();
-      expect(res.json).toHaveBeenCalled();
+      expect(Cart.findById).toHaveBeenCalled();
     });
   });
   describe('When the updateBalloonAmountCart is called with a rejected value', () => {
@@ -188,6 +190,29 @@ describe('Given the cart controller', () => {
       await updateBalloonAmountCart(req, res, next);
 
       expect(Balloon.findById).toHaveBeenCalled();
+      expect(Cart.findById).toHaveBeenCalled();
+      expect(next).toHaveBeenCalled();
+    });
+  });
+  describe('When the buyCsrt is called', () => {
+    test('Then res.status should have been called', async () => {
+      Cart.findById.mockReturnValue({
+        save: jest.fn(),
+      });
+
+      await buyCart(req, res, next);
+
+      expect(Cart.findById).toHaveBeenCalled();
+      expect(res.status).toHaveBeenCalled();
+      expect(res.json).toHaveBeenCalled();
+    });
+  });
+  describe('When the buyCart is called with a rejected value', () => {
+    test('Then next should have been called', async () => {
+      Cart.findById.mockRejectedValue();
+
+      await buyCart(req, res, next);
+
       expect(Cart.findById).toHaveBeenCalled();
       expect(next).toHaveBeenCalled();
     });

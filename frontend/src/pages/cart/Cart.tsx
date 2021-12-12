@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { decreaseBalloon, deleteOnCart, increaseBalloon, loadCart } from '../../redux/actions/actionCreators'
+import { buy, decreaseBalloon, deleteOnCart, increaseBalloon, loadCart } from '../../redux/actions/actionCreators'
 import { rootState } from '../../redux/reducers'
 import plus from '../../assets/plus.svg'
 import minus from '../../assets/minus.svg'
@@ -36,6 +36,10 @@ const Cart = () => {
         dispatch(decreaseBalloon(cartId, balloon))
     }
 
+    function handleBuy() {
+        dispatch(buy(cartId))
+    }
+
     return (
         <section className='cart'>
         <p className='page-title'>CART</p>
@@ -63,14 +67,14 @@ const Cart = () => {
 
                 </div>
                 </ React.Fragment>
-            )) : <h2>Your cart is empty</h2> }
+            )) : <h2 className='text'>Your cart is empty</h2> }
             
         </div>
         <div className='cart-item__bar' ></div>
             <p className='cart-list__pay'>
                 Total price:
             </p>
-                <button className='cart-list__button'>PAY</button>
+                <button className='cart-list__button' onClick={() => handleBuy()}>PAY</button>
         </section>
     )
 }
