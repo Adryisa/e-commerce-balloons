@@ -11,6 +11,7 @@ function userReducer(state: any = {}, action: AnyAction) {
         newState = action.payload
         break; 
         case balloonsAndCartActionTypes.ADD_USER:
+            console.log(action.payload)
         newState = action.payload.newUser
         break;
         default:
