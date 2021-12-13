@@ -126,7 +126,6 @@ async function deleteBalloonCart(req, res, next) {
         ],
       },
     });
-    console.log(5);
     res.status(204).json(finalCart);
   } catch (err) {
     next(err);

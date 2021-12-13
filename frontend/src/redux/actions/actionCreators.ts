@@ -23,7 +23,7 @@ export function loadBalloons() {
       } catch (err) {
          dispatch({
             type: balloonsAndCartActionTypes.FAILED_LOAD_BALLOONS,
-            payload: err
+            err
          })
       }
    }
@@ -188,7 +188,6 @@ export function addUser(user: User) {
             err
          })
       }
-
    }
 }
 
@@ -204,7 +203,6 @@ export function buy(idCart: string) {
                Authorization: `Bearer ${token}`
             }
          })
-         console.log('estoy en el action creator', data)
          dispatch({
             type: balloonsAndCartActionTypes.BUY,
             payload: data

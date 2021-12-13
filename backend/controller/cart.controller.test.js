@@ -122,7 +122,8 @@ describe('Given the cart controller', () => {
 
       Cart.findById.mockReturnValue({
         populate: jest.fn().mockReturnValue({
-          populate: jest.fn(),
+          balloonId: 'testaaar',
+          amount: 3,
         }),
       });
 
