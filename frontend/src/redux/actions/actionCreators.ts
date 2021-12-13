@@ -176,17 +176,10 @@ export function loadUser(user: userLogin) {
 
 export function addUser(user: User) {
    return (dispatch: AppDispatch) => {
-      try {
          dispatch({
          type: balloonsAndCartActionTypes.ADD_USER,
          payload: user
       })
-      } catch(err) {
-         dispatch ({
-            type: balloonsAndCartActionTypes.FAILED_ADD_USER,
-            err
-         })
-      }
    }
 }
 
