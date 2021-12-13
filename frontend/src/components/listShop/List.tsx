@@ -34,7 +34,7 @@ const List = ({balloon} : {balloon: Balloon}) => {
                     <p className='shop-list__item-text'>Price: {balloon.price}€</p>
                     </div>
 
-                    <img src={cart} alt="cart icon" onClick={() => handleAdd(balloon._id)} />
+                    <img src={cart} alt="cart icon" onClick={() => handleAdd(balloon._id)} data-testid='add'/>
                    </li>
                </ul> 
         </div>
