@@ -95,7 +95,6 @@ export function deleteOnCart(idCart: string, balloon: Balloon) {
             data = balloon
          })
 
-      
          dispatch({
             type: balloonsAndCartActionTypes.DELETE_CART_BALLOON,
             payload: data
@@ -195,7 +194,7 @@ export function buy(idCart: string) {
    const token = JSON.parse(localStorage.getItem('user') || '{}')
   
    const urlApi = `${urlBase}cart/${idCart}`
-   console.log(urlApi)
+   
    return async (dispatch: AppDispatch) => {
       try {
          const data  = await axios.patch(urlApi, {}, {

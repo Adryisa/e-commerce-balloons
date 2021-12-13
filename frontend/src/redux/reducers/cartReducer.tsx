@@ -26,9 +26,8 @@ function cartReducer(cart = initialCart, action: AnyAction ) {
         break;
 
         case balloonsAndCartActionTypes.BUY:
-        console.log('toy en el reducer', action.payload)
         newCart = [...cart.balloons, action.payload.balloons]
-        console.log(newCart)
+        
         break;
         
         default:
