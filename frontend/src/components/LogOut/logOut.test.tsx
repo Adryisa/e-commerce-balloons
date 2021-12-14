@@ -2,16 +2,15 @@ import React from "react";
 import { fireEvent, render, screen } from '../../utils/test-utils'
 import { BrowserRouter } from 'react-router-dom';
 import LogOut from "./logOut";
-import userServices from "../../services/userServices/userServices";
+import * as userServices from "../../services/userServices/userServices";
 
-jest.mock('../../services/userServices/userServices')
-
-userServices.mockImplementation(() => ({
-    test: 'test'
-    // logOut: jest.fn(),
-    // logIn: jest.fn()
-}))
-
+jest.mock('../../services/userServices/userServices', () => {
+    const mUserService = () =>  ({
+      logIn: jest.fn(),
+      logOut: jest.fn()
+    })
+    return mUserService;
+  })
 
 
 describe('Given the login component', () => {  
@@ -44,6 +43,7 @@ describe('Given the login component', () => {
         test('Then there should be a button log out', () => {
             expect(screen.getByText(/logout/i)).toBeInTheDocument()
             fireEvent.click(screen.getByText(/logout/i))
+            expect(userServices).toHaveBeenCalled
         }) 
     })
 })

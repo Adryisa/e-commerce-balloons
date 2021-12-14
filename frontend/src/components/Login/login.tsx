@@ -19,6 +19,7 @@ const Login = () => {
     const handleSubmit = async (evt: any) => {
         evt.preventDefault()
         const loggedUser = await userServices().logIn((loginState))
+        console.log(loggedUser)
         dispatch(loadUser(loggedUser))
     }
 
