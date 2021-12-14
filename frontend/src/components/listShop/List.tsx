@@ -1,11 +1,12 @@
 import React from 'react'
 import Balloon from '../../interfaces/balloonsInterface'
 import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import './list.scss'
 import { rootState } from '../../redux/reducers'
 import cart from '../../assets/cart-add.svg'
 import { addToCart } from '../../redux/actions/actionCreators'
-import { useNavigate } from 'react-router-dom'
+
 
 const List = ({balloon} : {balloon: Balloon}) => {
 

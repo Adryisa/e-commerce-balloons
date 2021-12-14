@@ -66,7 +66,7 @@ const Cart = () => {
                </div>
                 </div>
                 </ React.Fragment>
-            )) : <h2 className='text'>Your cart is empty</h2> }
+            )) : <h2 className='text'>¡¡Thanks for shopping!!</h2> }
             
         </div>
         <div className='cart-item__bar' ></div>
