@@ -14,7 +14,9 @@ export interface actionTypesInterface {
     LOAD_USER: string, 
     FAILED_LOAD_USER: string,
     ADD_USER: string, 
-    FAILED_ADD_USER: string
+    FAILED_ADD_USER: string,
+    BUY: string,
+    FAILED_BUY: string
 
 }
 
@@ -34,7 +36,9 @@ const balloonsAndCartActionTypes: actionTypesInterface = {
     LOAD_USER: 'LOAD_USER',
     FAILED_LOAD_USER: 'FAILED_LOAD_USER',
     ADD_USER: 'ADD_USER',
-    FAILED_ADD_USER: 'FAILED_ADD_USER'
+    FAILED_ADD_USER: 'FAILED_ADD_USER',
+    BUY: 'BUY',
+    FAILED_BUY: 'FAILED_BUY'
 }
 
 

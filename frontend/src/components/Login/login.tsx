@@ -2,10 +2,9 @@ import React, { useState } from 'react';
 import userServices from '../../services/userServices/userServices'
 import { useSelector, useDispatch } from 'react-redux'
 import { rootState } from '../../redux/reducers'
-import LogOut from '../LogOut/logOut';
-import Register from '../register/Register';
 import './login.scss'
 import { loadUser } from '../../redux/actions/actionCreators';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
     const [loginState, setLoginState] = useState({email: '', password: ''})
@@ -16,13 +15,19 @@ const Login = () => {
     
     const dispatch = useDispatch()
 
+    const navigate = useNavigate();
+
+
 
     const handleSubmit = async (evt: any) => {
         evt.preventDefault()
         const loggedUser = await userServices().logIn((loginState))
         dispatch(loadUser(loggedUser))
+        navigate('/')
     }
 
+    
+    
     const handleChange = (evt: any, control: any) => {
         setLoginState({...loginState, [control]: evt.target.value})
     }
@@ -50,7 +55,6 @@ const Login = () => {
                 onChange={(evt) => handleChange(evt, 'password')}
                 />
             <button type="submit" className='form-container__button'>Login</button>
-            <LogOut /> 
         </form>
     )
 }

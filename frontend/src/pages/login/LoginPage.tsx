@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 const LoginPage = () => {
     return (
         <section className='login'>        
-        <p className='page-title'> LOGIN </p> 
+        <h2 className='page-title'> LOGIN </h2> 
         <p className='bar'></p>
         <div className='logo-container'>
         <div className='logo-container__circle'>

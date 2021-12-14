@@ -6,7 +6,7 @@ import './registerPage.scss'
 const RegisterPage = () => {
     return (
         <section className='register'>
-        <p className='page-title'> Register </p> 
+        <h2 className='page-title'>Register</h2> 
         <p className='bar'></p>
         <div className='logo-container'>
         <div className='logo-container__circle'>

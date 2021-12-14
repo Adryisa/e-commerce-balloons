@@ -1,12 +1,18 @@
 import React from 'react'
 import Balloon from '../../interfaces/balloonsInterface'
 import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import './list.scss'
 import { rootState } from '../../redux/reducers'
 import cart from '../../assets/cart-add.svg'
 import { addToCart } from '../../redux/actions/actionCreators'
 
+
 const List = ({balloon} : {balloon: Balloon}) => {
+
+    const isLogged = useSelector((store: rootState) => {
+        return store.user.cart
+    })      
 
     const cartId = useSelector((store: rootState) => {
         return store.user.cart
@@ -14,8 +20,15 @@ const List = ({balloon} : {balloon: Balloon}) => {
 
     const dispatch = useDispatch()
 
+    const navigate = useNavigate() 
+
     function handleAdd(balloon: any) {
+        if (isLogged) {
         dispatch(addToCart(cartId, balloon))
+        } else {
+            navigate('/login')
+        }
+   
     }
 
 
@@ -34,7 +47,7 @@ const List = ({balloon} : {balloon: Balloon}) => {
                     <p className='shop-list__item-text'>Price: {balloon.price}€</p>
                     </div>
 
-                    <img src={cart} alt="cart icon" onClick={() => handleAdd(balloon._id)} />
+                   <img src={cart} alt="cart icon" onClick={() => handleAdd(balloon._id)} data-testid='add'/>
                    </li>
                </ul> 
         </div>

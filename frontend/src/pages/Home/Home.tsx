@@ -12,7 +12,7 @@ const Home = () => {
             <ul className='navigation__list'>
                 <Link to='/shop' className='navigation__link'>      
                 <li className='navigation__list-item' >
-                <img src='https://res.cloudinary.com/dcy6vi33h/image/upload/v1638197401/main/ballons_bqqvdr.webp' alt="balloons image" className='navigation__list-img'/>
+                <img src='https://res.cloudinary.com/dcy6vi33h/image/upload/v1638197401/main/ballons_bqqvdr.webp' alt="balloons image" className='navigation__list-img' data-testid='2'/>
                <p className='navigation__list-text'> Balloons</p>
             </li>
             </Link>

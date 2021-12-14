@@ -5,6 +5,8 @@ import house from '../../assets/house.svg'
 import balloon from '../../assets/ion_balloon-outline.svg'
 import mail from '../../assets/mail.svg'
 import { Link } from 'react-router-dom';
+import LogOut from '../LogOut/logOut';
+
 
 const Sidebar = () => {
     const [isOpen, setIsOpen] = useState(false)
@@ -30,6 +32,7 @@ const Sidebar = () => {
       <img src={mail} alt="email" className="slide__icon" />
     Contact us
       </div>
+      <LogOut /> 
         </Menu>
     )
 }

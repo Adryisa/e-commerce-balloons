@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import { addUser } from '../../redux/actions/actionCreators'
 import { rootState } from '../../redux/reducers'
 import registerUser from '../../services/userServices/registerService'
@@ -15,11 +16,13 @@ const Register = () => {
     
     const dispatch = useDispatch()
 
+    const navigate = useNavigate()
+
     const handleSubmit = async (evt: any) => {
         evt.preventDefault()
         const newUser = await registerUser(register)
-        console.log('toy en el componente',newUser)
         dispatch(addUser(newUser))
+        navigate('/')
     }
 
     const handleChange = (evt: any, control: any) => {
@@ -39,6 +42,7 @@ const Register = () => {
                 value={register.name}
                 required
                 onChange={(evt) => handleChange(evt, 'name')}
+                data-testid='dos'
                 />
                 <input 
                 type="text" 

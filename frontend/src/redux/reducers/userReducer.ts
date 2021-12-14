@@ -2,7 +2,7 @@ import { AnyAction } from "redux";
 import balloonsAndCartActionTypes from "../actions/actionTypes";
 
 
-function userReducer(state = {}, action: AnyAction) {
+function userReducer(state: any = {}, action: AnyAction) {
 
     let newState; 
 

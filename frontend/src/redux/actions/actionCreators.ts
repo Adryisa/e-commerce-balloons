@@ -2,7 +2,6 @@ import axios from 'axios'
 import balloonsAndCartActionTypes from './actionTypes'
 import { AppDispatch } from '../store/store'
 import Balloon from '../../interfaces/balloonsInterface'
-import userServices from '../../services/userServices/userServices'
 import User from '../../interfaces/userInterface'
 import userLogin from '../../interfaces/userLoginInterface'
 
@@ -24,7 +23,7 @@ export function loadBalloons() {
       } catch (err) {
          dispatch({
             type: balloonsAndCartActionTypes.FAILED_LOAD_BALLOONS,
-            payload: err
+            err
          })
       }
    }
@@ -96,7 +95,6 @@ export function deleteOnCart(idCart: string, balloon: Balloon) {
             data = balloon
          })
 
-      
          dispatch({
             type: balloonsAndCartActionTypes.DELETE_CART_BALLOON,
             payload: data
@@ -178,17 +176,34 @@ export function loadUser(user: userLogin) {
 
 export function addUser(user: User) {
    return (dispatch: AppDispatch) => {
-      try {
          dispatch({
          type: balloonsAndCartActionTypes.ADD_USER,
          payload: user
       })
-      } catch(err) {
-         dispatch ({
-            type: balloonsAndCartActionTypes.FAILED_ADD_USER,
+   }
+}
+
+export function buy(idCart: string) {
+   const token = JSON.parse(localStorage.getItem('user') || '{}')
+  
+   const urlApi = `${urlBase}cart/${idCart}`
+   
+   return async (dispatch: AppDispatch) => {
+      try {
+         const data  = await axios.patch(urlApi, {}, {
+            headers: {
+               Authorization: `Bearer ${token}`
+            }
+         })
+         dispatch({
+            type: balloonsAndCartActionTypes.BUY,
+            payload: data
+         })
+      } catch (err) {
+         dispatch({
+            type: balloonsAndCartActionTypes.FAILED_BUY,
             err
          })
       }
-
    }
 }

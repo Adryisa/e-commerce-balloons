@@ -126,8 +126,23 @@ async function deleteBalloonCart(req, res, next) {
         ],
       },
     });
-
     res.status(204).json(finalCart);
+  } catch (err) {
+    next(err);
+  }
+}
+
+async function buyCart(req, res, next) {
+  try {
+    const cartId = req.params.id;
+
+    const cart = await Cart.findById(cartId);
+
+    cart.balloons = [];
+
+    cart.save();
+
+    res.status(201).json(cart);
   } catch (err) {
     next(err);
   }
@@ -138,4 +153,5 @@ module.exports = {
   addBalloonToCart,
   updateBalloonAmountCart,
   deleteBalloonCart,
+  buyCart
 };
