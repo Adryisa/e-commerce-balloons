@@ -58,13 +58,12 @@ const Cart = () => {
                </div>      
                <div className='cart-item__icon-container'>    
                 <div className='cart-item__icon-plus'>               
-                <img className='cart-item__icon' src={minus} alt="minus icon" onClick={() => handleDecrease(balloon.balloonId._id)}/>
+                <img className='cart-item__icon' src={minus} alt="minus icon" data-testid='menos' onClick={() => handleDecrease(balloon.balloonId._id)}/>
                <p className='cart-item__text'>{balloon.amount}</p>
-               <img className='cart-item__icon' src={plus} alt="plus icon"  onClick={() => handleIncrease(balloon.balloonId._id)}/></div>           
+               <img className='cart-item__icon' src={plus} alt="plus icon" data-testid='plus' onClick={() => handleIncrease(balloon.balloonId._id)}/></div>           
 
-               <img className='cart-item__icon-trash' src={trash} alt="trash icon" onClick={() => handleDelete(balloon.balloonId._id)}/>
+               <img className='cart-item__icon-trash' src={trash} alt="trash icon" data-testid='trash' onClick={() => handleDelete(balloon.balloonId._id)}/>
                </div>
-
                 </div>
                 </ React.Fragment>
             )) : <h2 className='text'>Your cart is empty</h2> }
