@@ -14,6 +14,7 @@ const Header = () => {
     const isLogged = useSelector((store: rootState) => {
         return store.user.cart
     })        
+    
     return (   
             <header className='header'>
             <h1 className='header__title'>Partyando
