@@ -6,7 +6,7 @@ import { BrowserRouter } from 'react-router-dom';
 describe('When the footer component is rendered', () => {
     test('Then partyando event should be rendered', () => {
         render (
-            <BrowserRouter><Footer /></BrowserRouter>
+            <Footer />
         )
         expect(screen.getByText(/Partyando events/i)).toBeInTheDocument()
         expect(screen.getAllByRole('img')).toHaveLength(3)

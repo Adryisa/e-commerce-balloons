@@ -21,7 +21,7 @@ const dispatch = useDispatch()
 
     return (
         <section className='shop'>
-       <p className='page-title'> Shop </p> 
+       <h2 className='page-title'> Shop </h2> 
         <p className='bar'></p>
             <section className='shop-list'>
             {balloons.map((balloon: any) => (

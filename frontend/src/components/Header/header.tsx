@@ -26,7 +26,7 @@ const Header = () => {
         <section className='header__login-cart'>
             <Link to={'/login'}><img src={logUser} alt="link para logearte" /></Link>
         {
-            isLogged ?  <Link to={`/cart/${isLogged}`} ><img src={cart} alt="ir al carrito" /></Link> : <Link to={'/login'} ><img src={cart} alt="ir al carrito" /></Link> 
+            isLogged ?  <Link to={`/cart/${isLogged}`} ><img src={cart} alt="cart icon link" /></Link> : <Link to={'/login'} ><img src={cart} alt="ir al carrito" /></Link> 
 
         } 
         </section>
