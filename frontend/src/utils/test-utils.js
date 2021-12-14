@@ -10,10 +10,10 @@ import user from '../redux/reducers/userReducer'
 function render(
   ui,
   {
-    initialState,
+    preloadedState,
     store = configureStore({
       reducer: { balloons, cart, user },
-      initialState,
+      preloadedState,
     }),
     ...renderOptions
   } = {}

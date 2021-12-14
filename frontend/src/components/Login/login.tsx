@@ -3,7 +3,6 @@ import userServices from '../../services/userServices/userServices'
 import { useSelector, useDispatch } from 'react-redux'
 import { rootState } from '../../redux/reducers'
 import LogOut from '../LogOut/logOut';
-import Register from '../register/Register';
 import './login.scss'
 import { loadUser } from '../../redux/actions/actionCreators';
 
