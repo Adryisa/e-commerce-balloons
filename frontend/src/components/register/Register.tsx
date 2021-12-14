@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import { addUser } from '../../redux/actions/actionCreators'
 import { rootState } from '../../redux/reducers'
 import registerUser from '../../services/userServices/registerService'
@@ -15,10 +16,13 @@ const Register = () => {
     
     const dispatch = useDispatch()
 
+    const navigate = useNavigate()
+
     const handleSubmit = async (evt: any) => {
         evt.preventDefault()
         const newUser = await registerUser(register)
         dispatch(addUser(newUser))
+        navigate('/')
     }
 
     const handleChange = (evt: any, control: any) => {
