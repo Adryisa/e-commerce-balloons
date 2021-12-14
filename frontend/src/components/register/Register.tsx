@@ -38,6 +38,7 @@ const Register = () => {
                 value={register.name}
                 required
                 onChange={(evt) => handleChange(evt, 'name')}
+                data-testid='dos'
                 />
                 <input 
                 type="text" 

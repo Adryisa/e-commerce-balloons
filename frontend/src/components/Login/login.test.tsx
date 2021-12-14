@@ -2,7 +2,8 @@ import React from "react";
 import { fireEvent, render, screen } from '../../utils/test-utils'
 import { BrowserRouter } from 'react-router-dom';
 import Login from "./login";
-import userEvent from "@testing-library/user-event";
+
+
 
 describe('Given the login component', () => {
     test('Then title login should be rendered', () => {
@@ -18,5 +19,7 @@ describe('Given the login component', () => {
         const inputPasswrd = screen.getByPlaceholderText(/password/i)
 
         fireEvent.change(inputEmail, { target: { value: 'test' } } )
+        fireEvent.change(inputPasswrd, { target: { value: 'test' } } )
+        fireEvent.submit(screen.getByText(/login/i))
     })
 })

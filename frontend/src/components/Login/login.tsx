@@ -49,7 +49,6 @@ const Login = () => {
                 onChange={(evt) => handleChange(evt, 'password')}
                 />
             <button type="submit" className='form-container__button'>Login</button>
-            <LogOut /> 
         </form>
     )
 }

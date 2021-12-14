@@ -19,7 +19,6 @@ describe('When the header component is rendered', () => {
 
 describe('When there is not any user logged', () => {
     const preloadedState = {
-      
             balloons: [], 
             cart: { 
                 balloons: [], 
