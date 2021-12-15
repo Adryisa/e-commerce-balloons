@@ -3,18 +3,12 @@ import UserLogin from '../../interfaces/userLoginInterface'
 import userServices from './userServices'
 
 jest.mock('axios')
-// axios.mockResolvedValue({
-//     post: jest.fn().mockResolvedValue({
-//         data: {
-//             token: 'testettstetst',
-//             user: 'tetstetstestets'
-//         }
-//     })
-// })
+
 
 describe('Given the userServices function, log in', () => {
     test('When is called then a user should have been posted', async () => {
         const response = userServices();
+        
         expect(JSON.stringify(response)).toBe(JSON.stringify({
             logIn: function(user: UserLogin) { 
                 const urlBase = 'http://localhost:3200/api'
