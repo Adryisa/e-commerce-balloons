@@ -4,6 +4,7 @@
 package-lock.json
 /node_modules
 .balloons.js
+.scannerwork
 # compiled output
 /dist
 /tmp
