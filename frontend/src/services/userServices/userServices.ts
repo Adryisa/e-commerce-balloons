@@ -10,11 +10,13 @@ export default function userServices() {
            email: user.email, password: user.password   
         }).then((result) => {
             localStorage.setItem('user', JSON.stringify(result.data.token))
-
+            console.log(result.data)
             return result.data.user
+            
+        }).catch((err) => {throw new Error(err)}
+        )
 
-        }).catch((err) => console.log(err))
-
+        console.log(response)
         return response;
     }
 
