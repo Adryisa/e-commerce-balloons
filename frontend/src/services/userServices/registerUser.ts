@@ -12,6 +12,6 @@ export default function registerUser(user: User) {
    }).then((result) => {
     localStorage.setItem('user', JSON.stringify(result.data.token))
        return result.data
-   }).catch((err) => console.log(err))
+   }).catch((err) => {throw new Error(err)})
    return response
 }

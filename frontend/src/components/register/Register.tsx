@@ -1,18 +1,12 @@
-import React from 'react'
-import { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import React, { useState} from 'react'
+import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { addUser } from '../../redux/actions/actionCreators'
-import { rootState } from '../../redux/reducers'
-import registerUser from '../../services/userServices/registerService'
+import registerUser from '../../services/userServices/registerUser'
 
 const Register = () => {
 
     const [register, setRegister] = useState({name: '', lastname: '', email: '', password: ''})
-
-    const user = useSelector((store: rootState) => {
-        return store.user
-    })
     
     const dispatch = useDispatch()
 

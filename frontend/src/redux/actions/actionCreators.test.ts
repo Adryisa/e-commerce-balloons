@@ -1,7 +1,7 @@
 import axios from 'axios'
 import Balloon from '../../interfaces/balloonsInterface'
 import User from '../../interfaces/userInterface'
-import userLogin from '../../interfaces/userLoginInterface'
+import UserLogin from '../../interfaces/userLoginInterface'
 import { addToCart, addUser, buy, decreaseBalloon, deleteOnCart, increaseBalloon, loadBalloons, loadCart, loadUser } from './actionCreators'
 import actionTypes from './actionTypes'
 
@@ -36,7 +36,7 @@ describe('Given the action creator file', () => {
         password: 'test'
     }
 
-    const loggedUser: userLogin = {
+    const loggedUser: UserLogin = {
         email: 'test@',
         password: 'test'
     }
@@ -59,7 +59,7 @@ describe('Given the action creator file', () => {
             })
         })
     })
-    describe('When the load cart is called', () => {
+    describe('When the load balloons is called', () => {
         test('Then it should dispatch the type and payload of error', async () => {
             mockedAxios.get.mockRejectedValue(new Error())
 

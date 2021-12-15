@@ -10,7 +10,6 @@ import LogOut from '../LogOut/logOut';
 
 const Sidebar = () => {
     const [isOpen, setIsOpen] = useState(false)
-    const handleClick = () => setIsOpen(false);
     const handleStateChange = (state: any) => setIsOpen(state.isOpen);
 
     return (

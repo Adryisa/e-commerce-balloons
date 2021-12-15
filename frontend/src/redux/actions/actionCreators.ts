@@ -3,7 +3,7 @@ import balloonsAndCartActionTypes from './actionTypes'
 import { AppDispatch } from '../store/store'
 import Balloon from '../../interfaces/balloonsInterface'
 import User from '../../interfaces/userInterface'
-import userLogin from '../../interfaces/userLoginInterface'
+import UserLogin from '../../interfaces/userLoginInterface'
 
 const urlBase = 'http://localhost:3200/api/'
 
@@ -165,7 +165,7 @@ export function decreaseBalloon(idCart: string, balloon: Balloon) {
    }
 }
 
-export function loadUser(user: userLogin) {
+export function loadUser(user: UserLogin) {
       return (dispatch: AppDispatch) => {
          dispatch({
          type: balloonsAndCartActionTypes.LOAD_USER,

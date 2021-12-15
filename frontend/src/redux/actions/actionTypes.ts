@@ -1,4 +1,4 @@
-export interface actionTypesInterface {
+export interface ActionTypesInterface {
     LOAD_BALLOONS: string,
     FAILED_LOAD_BALLOONS: string,
     LOAD_CART: string
@@ -20,7 +20,7 @@ export interface actionTypesInterface {
 
 }
 
-const balloonsAndCartActionTypes: actionTypesInterface = {
+const balloonsAndCartActionTypes: ActionTypesInterface = {
     LOAD_BALLOONS: 'LOAD_BALLOONS',
     FAILED_LOAD_BALLOONS: 'FAILED_LOAD_BALLOONS',
     LOAD_CART: 'LOAD_CART',
