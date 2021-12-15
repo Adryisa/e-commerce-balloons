@@ -1,9 +1,9 @@
 import axios from "axios";
-import userLogin from "../../interfaces/userLoginInterface";
+import UserLogin from "../../interfaces/userLoginInterface";
 
 
 export default function userServices() {
-    function logIn(user: userLogin) { 
+    function logIn(user: UserLogin) { 
         const urlBase = 'http://localhost:3200/api'
 
        const response =  axios.post(`${urlBase}/login`, {    

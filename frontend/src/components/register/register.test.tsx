@@ -2,8 +2,7 @@ import React from "react";
 import { fireEvent, render, screen } from '../../utils/test-utils'
 import { BrowserRouter } from 'react-router-dom';
 import Register from "./Register";
-import * as actionsMock from "../../redux/actions/actionCreators";
-import registerUser from "../../services/userServices/registerService";
+import registerUser from "../../services/userServices/registerUser";
 
 jest.mock("../../redux/actions/actionCreators",  () => {
     const creators = {
@@ -14,7 +13,7 @@ jest.mock("../../redux/actions/actionCreators",  () => {
     return creators;
   })
 
-  jest.mock('../../services/userServices/registerService')
+  jest.mock("../../services/userServices/registerUser")
 
   registerUser.mockResolvedValue({
       name: 'test',

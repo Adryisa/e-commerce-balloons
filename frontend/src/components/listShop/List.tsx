@@ -22,7 +22,7 @@ const List = ({balloon} : {balloon: Balloon}) => {
 
     const navigate = useNavigate() 
 
-    function handleAdd(balloon: any) {
+    function handleAdd(balloon: Balloon | any) {
         if (isLogged) {
         dispatch(addToCart(cartId, balloon))
         } else {
@@ -40,14 +40,14 @@ const List = ({balloon} : {balloon: Balloon}) => {
                     <img src={balloon.img_url} alt="imagen globo" className='shop-list__item-img'/>
                     </div>
                     <div className='shop-list__text-container'>
-                    <p className='shop-list__item-text'>Size: {balloon.size}</p>
+                     <p className='shop-list__item-text'>Size: {balloon.size}</p>
                     <p className='shop-list__item-text'>{balloon.type}</p>
                     <p className='shop-list__item-text'>Color: {balloon.color}</p>
                     <p className='shop-list__item-text'>Pack: {balloon.package}</p>
                     <p className='shop-list__item-text'>Price: {balloon.price}€</p>
                     </div>
 
-                   <img src={cart} alt="cart icon" onClick={() => handleAdd(balloon._id)} data-testid='add'/>
+                   <img src={cart} alt="cart icon" onClick={() => handleAdd(balloon._id)} data-testid='add' className='shop-list__item-icon'/>
                    </li>
                </ul> 
         </div>

@@ -1,17 +1,12 @@
 import React, { useState } from 'react';
 import userServices from '../../services/userServices/userServices'
-import { useSelector, useDispatch } from 'react-redux'
-import { rootState } from '../../redux/reducers'
+import { useDispatch } from 'react-redux'
 import './login.scss'
 import { loadUser } from '../../redux/actions/actionCreators';
 import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
     const [loginState, setLoginState] = useState({email: '', password: ''})
-
-    const user = useSelector((store: rootState) => {
-        return store.user
-    })
     
     const dispatch = useDispatch()
 
