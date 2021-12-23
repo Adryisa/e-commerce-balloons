@@ -28,7 +28,6 @@ const List = ({balloon} : {balloon: Balloon}) => {
         } else {
             navigate('/login')
         }
-   
     }
 
 
