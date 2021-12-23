@@ -13,6 +13,7 @@ const Cart = () => {
     const cartId = useSelector((store: rootState) => {
         return store.user.cart
     })
+    let cartTotal = 0;
 
     const cart = useSelector((store: rootState) => {
         return store.cart
@@ -45,7 +46,10 @@ const Cart = () => {
         <p className='page-title'>CART</p>
         <div className='bar'></div>
         <div className='cart-list-container'>
-            {cart.balloons ? cart.balloons.map((balloon: any, key: number) => (
+        {cart.balloons ? cart.balloons.map((balloon: any, key: number) => {
+             const balloonTotal = balloon.balloonId.price * balloon.amount;
+             cartTotal += balloonTotal;
+            return (
             < React.Fragment key={key} >
             <div className='cart-item__bar' ></div>
             <div className='cart-item'>
@@ -66,12 +70,13 @@ const Cart = () => {
                </div>
                 </div>
                 </ React.Fragment>
-            )) : <h2 className='text'>¡¡Thanks for shopping!!</h2> }
+                )   
+            }) : <h2 className='text'>¡¡Thanks for shopping!!</h2> }
             
         </div>
         <div className='cart-item__bar' ></div>
             <p className='cart-list__pay'>
-                Total price:
+                Total price: {cartTotal}
             </p>
                 <button className='cart-list__button' onClick={() => handleBuy()}>PAY</button>
         </section>
