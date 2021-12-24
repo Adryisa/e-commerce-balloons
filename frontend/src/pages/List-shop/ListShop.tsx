@@ -8,12 +8,13 @@ import './listShop.scss'
 
 const ListShop = () => {
 
-const [input, setInput] = useState('')
+// const [input, setInput] = useState('')
 
+const [search, setSearch] = useState([])
 const balloons = useSelector((store: rootState) => {
     return store.balloons
 })
-const [search, setSearch] = useState([])
+
 const dispatch = useDispatch()
 
     useEffect(() => {
@@ -24,16 +25,18 @@ const dispatch = useDispatch()
     dispatch(loadBalloons())
     }, [dispatch])
     
-    useEffect(() => {
-        if (input.length) {
-            const newSearch = search.filter(
-                (item: any) => item.color.toLowerCase().includes(input.trim().toLowerCase())
-                );
-                setSearch(newSearch)
-        } else {
-            setSearch(balloons)
+
+  const filter = (query: string) => {
+    if (query.length) {
+                const newSearch = search.filter(
+                    (item: any) => item.color.toLowerCase().includes(query.trim().toLowerCase())
+                    );
+                    setSearch(newSearch)
+                    console.log(newSearch)
+            } else {
+                setSearch(balloons)
+            }
         }
-    }, [input])
 
 
     return (
@@ -44,15 +47,14 @@ const dispatch = useDispatch()
         <input 
         className='search-container__input'
         type='text'
-        value={input}
         placeholder='Find your balloon'
-        onChange={(evt) => setInput(evt.target.value)}
+        onChange={(evt) => filter(evt.target.value)}
         />
         </div>
             <section className='shop-list'>
-            {balloons.map((balloon: Balloon) => (
+            {search.length > 0 ? search.map((balloon: Balloon) => (
                 <List balloon={balloon} key={balloon._id} />
-            ))}
+            )) : <p>NO HAY PUTO</p>}
         </section>
         </section>
 
