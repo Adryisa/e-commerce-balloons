@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import List from '../../components/listShop/List'
 import Balloon from '../../interfaces/balloonsInterface'
@@ -8,6 +8,7 @@ import './listShop.scss'
 
 const ListShop = () => {
 
+const [search, setSearch] = useState([])
 const balloons = useSelector((store: rootState) => {
     return store.balloons
 })
@@ -15,18 +16,42 @@ const balloons = useSelector((store: rootState) => {
 const dispatch = useDispatch()
 
     useEffect(() => {
+    setSearch(balloons)
+    }, [balloons]) 
+
+    useEffect(() => {
     dispatch(loadBalloons())
-}, [dispatch])
+    }, [dispatch])
+    
+
+  const filter = (query: string) => {
+    if (query.length) {
+                const newSearch = search.filter(
+                    (item: any) => item.color.toLowerCase().includes(query.trim().toLowerCase())
+                    );
+                    setSearch(newSearch)
+            } else {
+                setSearch(balloons)
+            }
+        }
 
 
     return (
         <section className='shop'>
        <h2 className='page-title'> Shop </h2> 
         <p className='bar'></p>
+        <div className='search-container'>
+        <input 
+        className='search-container__input'
+        type='text'
+        placeholder='Find your balloon'
+        onChange={(evt) => filter(evt.target.value)}
+        />
+        </div>
             <section className='shop-list'>
-            {balloons.map((balloon: Balloon) => (
+            {search.length > 0 ? search.map((balloon: Balloon) => (
                 <List balloon={balloon} key={balloon._id} />
-            ))}
+            )) : <p>NO HAY PUTO</p>}
         </section>
         </section>
 

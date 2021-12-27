@@ -13,6 +13,7 @@ const Cart = () => {
     const cartId = useSelector((store: rootState) => {
         return store.user.cart
     })
+    let cartTotal = 0;
 
     const cart = useSelector((store: rootState) => {
         return store.cart
@@ -29,6 +30,7 @@ const Cart = () => {
     }
 
     function handleIncrease(balloon: Balloon) {
+        
         dispatch(increaseBalloon(cartId, balloon))
     }
 
@@ -45,7 +47,10 @@ const Cart = () => {
         <p className='page-title'>CART</p>
         <div className='bar'></div>
         <div className='cart-list-container'>
-            {cart.balloons ? cart.balloons.map((balloon: any, key: number) => (
+        {cart.balloons ? cart.balloons.map((balloon: any, key: number) => {
+             const balloonTotal = balloon.balloonId.price * balloon.amount;
+             cartTotal += balloonTotal;
+            return (
             < React.Fragment key={key} >
             <div className='cart-item__bar' ></div>
             <div className='cart-item'>
@@ -58,7 +63,15 @@ const Cart = () => {
                </div>      
                <div className='cart-item__icon-container'>    
                 <div className='cart-item__icon-plus'>               
-                <img className='cart-item__icon' src={minus} alt="minus icon" data-testid='menos' onClick={() => handleDecrease(balloon.balloonId._id)}/>
+                <img className='cart-item__icon' src={minus} alt="minus icon" data-testid='menos' onClick={() => 
+                    {
+                        if (balloon.amount === 1) {
+                        handleDelete(balloon.balloonId._id)
+                    } else {
+                        handleDecrease(balloon.balloonId._id) 
+                    }
+                    }
+                 }/>
                <p className='cart-item__text'>{balloon.amount}</p>
                <img className='cart-item__icon' src={plus} alt="plus icon" data-testid='plus' onClick={() => handleIncrease(balloon.balloonId._id)}/></div>           
 
@@ -66,12 +79,13 @@ const Cart = () => {
                </div>
                 </div>
                 </ React.Fragment>
-            )) : <h2 className='text'>¡¡Thanks for shopping!!</h2> }
+                )   
+            }) : <h2 className='text'>¡¡Thanks for shopping!!</h2> }
             
         </div>
         <div className='cart-item__bar' ></div>
             <p className='cart-list__pay'>
-                Total price:
+                Total price: {cartTotal}
             </p>
                 <button className='cart-list__button' onClick={() => handleBuy()}>PAY</button>
         </section>

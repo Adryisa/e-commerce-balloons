@@ -15,7 +15,6 @@ describe('Given the home component', () => {
             )
             expect(screen.getByText(/Find your products:/i)).toBeInTheDocument()
             expect(screen.getByText(/balloons/i)).toBeInTheDocument()
-            userEvent.click(screen.getByTestId('2'))
 
         })
     })
