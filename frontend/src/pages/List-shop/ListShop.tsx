@@ -8,8 +8,6 @@ import './listShop.scss'
 
 const ListShop = () => {
 
-// const [input, setInput] = useState('')
-
 const [search, setSearch] = useState([])
 const balloons = useSelector((store: rootState) => {
     return store.balloons
@@ -32,7 +30,6 @@ const dispatch = useDispatch()
                     (item: any) => item.color.toLowerCase().includes(query.trim().toLowerCase())
                     );
                     setSearch(newSearch)
-                    console.log(newSearch)
             } else {
                 setSearch(balloons)
             }

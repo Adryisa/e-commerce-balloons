@@ -30,6 +30,7 @@ const Cart = () => {
     }
 
     function handleIncrease(balloon: Balloon) {
+        
         dispatch(increaseBalloon(cartId, balloon))
     }
 
@@ -62,7 +63,15 @@ const Cart = () => {
                </div>      
                <div className='cart-item__icon-container'>    
                 <div className='cart-item__icon-plus'>               
-                <img className='cart-item__icon' src={minus} alt="minus icon" data-testid='menos' onClick={() => handleDecrease(balloon.balloonId._id)}/>
+                <img className='cart-item__icon' src={minus} alt="minus icon" data-testid='menos' onClick={() => 
+                    {
+                        if (balloon.amount === 1) {
+                        handleDelete(balloon.balloonId._id)
+                    } else {
+                        handleDecrease(balloon.balloonId._id) 
+                    }
+                    }
+                 }/>
                <p className='cart-item__text'>{balloon.amount}</p>
                <img className='cart-item__icon' src={plus} alt="plus icon" data-testid='plus' onClick={() => handleIncrease(balloon.balloonId._id)}/></div>           
 
