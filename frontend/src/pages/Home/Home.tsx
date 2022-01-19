@@ -17,7 +17,7 @@ const Home = () => {
             </li>
             </Link>
             <li className='navigation__list-item' >
-                <img src='https://res.cloudinary.com/dcy6vi33h/image/upload/v1639585973/main/yoksel-zok-H9Un6az4rno-unsplash_x07bre.jpg' alt="balloons image" className='navigation__list-img' data-testid='2'/>
+                <img src='https://res.cloudinary.com/dcy6vi33h/image/upload/v1638197401/main/skyballoons_i2ha5b.webp' alt="balloons image" className='navigation__list-img' data-testid='2'/>
                <p className='navigation__list-text'> Accesories</p>
             </li>
             </ul>
