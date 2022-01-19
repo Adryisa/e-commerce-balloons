@@ -1,7 +1,6 @@
 # adriana-ortiz-final-project-202110 
----
-### Balloons E-commerce
 
+### Balloons E-commerce
 ---
 
 ### Stack
