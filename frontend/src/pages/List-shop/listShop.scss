@@ -1,4 +1,13 @@
 .shop {
-    flex-grow: 1;
-    width: 100%;
+  flex-grow: 1;
+  width: 100%;
+}
+
+.search-container {
+  padding: 1.5rem;
+
+  &__input {
+    height: 2.5rem;
+    width: auto;
+  }
 }
