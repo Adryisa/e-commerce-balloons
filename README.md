@@ -5,8 +5,8 @@
 
 ### Stack
 
-## Frontend: React/Redux/Typescript
+**Frontend: React/Redux/Typescript
 
-## Backend: Node/Mongoose/MongoDB 
+**Backend: Node/Mongoose/MongoDB 
 
-## Test: Jest
+**Test: Jest
