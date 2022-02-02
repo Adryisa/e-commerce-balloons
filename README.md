@@ -1,12 +1,12 @@
-# adriana-ortiz-final-project-202110 
+# Adriana-Ortiz-project 
 
 ### Balloons E-commerce
 ---
 
 ### Stack
 
-Frontend: React/Redux/Typescript
+## Frontend: React/Redux/Typescript
 
-Backend: Node/Mongoose/MongoDB 
+## Backend: Node/Mongoose/MongoDB 
 
-Test: Jest
+## Test: Jest
